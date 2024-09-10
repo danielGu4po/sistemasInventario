@@ -1,0 +1,43 @@
+h6 {
+    border-collapse: separate;
+    border-spacing: 16px 0;
+    border-spacing: 1rem 0;
+    color: #123;
+    display: table;
+    font-size: 5em;
+    line-height: .25;
+    margin: 1em 0 .5em;
+    table-layout: auto;
+    text-align: center;
+    text-shadow: .0625em .0625em 0 rgba(0, 0, 0, .2);
+    white-space: nowrap;
+    width: 100%;
+}
+
+h6 {
+    font-size: 1.25em;
+}
+
+h6:before {
+    border-top: 3px double #FF771F;
+    content: '';
+    display: table-cell;
+    width: 5%;
+}
+
+h6:after {
+    border-top: 3px double #FF771F;
+    content: '';
+    display: table-cell;
+    width: 95%;
+}
+
+h6:before {
+    border-top-color: black;
+    border-top-style: ridge;
+}
+
+h6:after {
+    border-top-color: #FF771F;
+    /* border-top-style: ridge; */
+}

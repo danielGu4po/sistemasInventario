@@ -1,0 +1,49 @@
+.contact-card {
+    font-family: Arial, sans-serif; 
+    cursor: pointer; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card .card-body {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-card:hover .card-body {
+    background-color: #e5e5e5;
+}
+
+.contact-card .card-title,
+.contact-card .card-text {
+    font-size: 1.0rem;
+    margin-bottom: 0.3rem;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.contact-card .card-title {
+    font-weight: bold;
+}
+
+.contact-phone a {
+    color: blue; 
+    text-decoration: none;
+    cursor: pointer; 
+}
+
+.phone-number {
+    color: blue;
+}
