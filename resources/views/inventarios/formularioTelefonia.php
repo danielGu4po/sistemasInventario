@@ -43,14 +43,14 @@
             <div class="mb-3">
                 <label class="form-label">Funcional</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="funcional" id="funcionalSi" value="sí" required>
-                    <label class="form-check-label" for="funcionalSi">
+                    <input class="form-check-input" type="radio" name="inventarioEstado" id="inventarioEstado" value="sí" required>
+                    <label class="form-check-label" for="inventarioEstado">
                         Sí
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="funcional" id="funcionalNo" value="no">
-                    <label class="form-check-label" for="funcionalNo">
+                    <input class="form-check-input" type="radio" name="inventarioEstado" id="inventarioEstado" value="no">
+                    <label class="form-check-label" for="inventarioEstado">
                         No
                     </label>
                 </div>
