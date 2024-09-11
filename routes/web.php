@@ -12,11 +12,11 @@ Route::get('/', function () {
 Route::resource('/asignar', AsignarController::class);
 /**Rutas de CRUD para Asignaciones */
 
-
+/**Rutas de Inventario */
 Route::resource('/invetario', InventarioController::class);
 Route::get('/inventarioComputo', [InventarioController::class, 'computo']);
 Route::get('/indexGeneral',[InventarioController::class, 'showFormularioComputo']);
-
+/**Rutas de Inventario */
 
 Auth::routes();
 
