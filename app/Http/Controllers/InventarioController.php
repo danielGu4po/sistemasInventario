@@ -30,6 +30,10 @@ class InventarioController extends Controller
         $datosComputo = invetario::all();
         return view('inventarios.formularioComputo', compact('datosComputo'));
     }
+    public function redes()
+    {
+        return view('inventarios.formularioRedes');
+    }
 
 
     /**
