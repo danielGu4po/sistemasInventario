@@ -7,6 +7,10 @@ use App\Models\invetario;
 
 class InventarioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -15,10 +19,10 @@ class InventarioController extends Controller
 
     }
 
-    public function showFormularioComputo()
+    public function showFormularioComputo(Request $request)
     {
         $datosGeneral = invetario::all();
-        return view('inventarios.index',compact('datosGeneral'));
+        return view('inventarios.vistaGeneral',compact('datosGeneral'));
     }
 
     public function computo()

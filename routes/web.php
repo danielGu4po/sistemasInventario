@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AsignarController;
-use App\Http\Controllers\InventariorController;
-use App\Http\Controllers\ComputoController;
+use App\Http\Controllers\InventarioController;
 
 Route::get('/', function () {
     return view('welcome');

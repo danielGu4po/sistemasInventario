@@ -14,7 +14,7 @@
         <h2 class="text-center mb-4">Formulario de Registro de Dispositivo</h2>
         
         
-        <form action="{{ url('/invetario') }}" method="POST">
+        <form id="inventarioForm" action="{{ url('/invetario') }}" method="POST">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 
     

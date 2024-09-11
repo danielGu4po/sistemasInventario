@@ -23,15 +23,7 @@
             </tr>
         </thead>
         <tbody>
-           <!-- @foreach($computo as $item)
-                <tr>
-                    <td>{{ $item->marca }}</td>
-                    <td>{{ $item->modelo }}</td>
-                    <td>{{ $item->num_serie }}</td>
-                    <td>{{ $item->ram }}</td>
-                    <td>{{ $item->observaciones }}</td>
-                </tr>
-            @endforeach-->
+           
         </tbody>
     </table>
 
@@ -48,15 +40,7 @@
             </tr>
         </thead>
         <tbody>
-           <!-- @foreach($miscellaneo as $item)
-                <tr>
-                    <td>{{ $item->marca }}</td>
-                    <td>{{ $item->modelo }}</td>
-                    <td>{{ $item->num_serie }}</td>
-                    <td>{{ $item->funcional ? 'Sí' : 'No' }}</td>
-                    <td>{{ $item->observaciones }}</td>
-                </tr>
-            @endforeach-->
+           
         </tbody>
     </table>
 
@@ -74,16 +58,8 @@
             </tr>
         </thead>
         <tbody>
-             <!--@foreach($telefonia as $item)
-                <tr>
-                    <td>{{ $item->marca }}</td>
-                    <td>{{ $item->modelo }}</td>
-                    <td>{{ $item->num_serie }}</td>
-                    <td>{{ $item->num_telefono }}</td>
-                    <td>{{ $item->funcional ? 'Sí' : 'No' }}</td>
-                    <td>{{ $item->observaciones }}</td>
-                </tr>-->
-            @endforeach
+             
+            
         </tbody>
     </table>
 
@@ -100,15 +76,7 @@
             </tr>
         </thead>
         <tbody>
-           <!-- @foreach($redes as $item)
-                <tr>
-                    <td>{{ $item->marca }}</td>
-                    <td>{{ $item->modelo }}</td>
-                    <td>{{ $item->num_serie }}</td>
-                    <td>{{ $item->funcional ? 'Sí' : 'No' }}</td>
-                    <td>{{ $item->observaciones }}</td>
-                </tr>
-            @endforeach-->
+           
         </tbody>
     </table>
 </div>
