@@ -88,7 +88,7 @@
                                 </a>
                                 <ul class="sub-menu">
                                     <li>
-                                        <a href="" style="cursor: pointer">{{ __('Index General ') }}<i class="fas fa-list"></i></a>
+                                        <a href="{{route('asignar.index')}}" style="cursor: pointer">{{ __('Index General ') }}<i class="fas fa-list"></i></a>
                                     </li>
                                     <li>
                                     <a href="{{ route('vistaGeneral') }}" style="cursor: pointer">{{ __('Equipos ') }}<i class="far fa-window-restore"></i></a>
