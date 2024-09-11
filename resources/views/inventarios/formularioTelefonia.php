@@ -18,25 +18,25 @@
             <!-- Campo de Marca -->
             <div class="mb-3">
                 <label for="marca" class="form-label">Marca</label>
-                <input type="text" class="form-control" id="marca" placeholder="Ej. Dell, HP, Lenovo" required>
+                <input type="text" class="form-control" id="inventarioMarca" name="inventarioMarca" placeholder="Ej. Dell, HP, Lenovo" required>
             </div>
 
             <!-- Campo de Modelo -->
             <div class="mb-3">
                 <label for="modelo" class="form-label">Modelo</label>
-                <input type="text" class="form-control" id="modelo" placeholder="Ej. Inspiron 15, MacBook Pro" required>
+                <input type="text" class="form-control" id="inventarioModelo" name="inventarioModelo" placeholder="Ej. Inspiron 15, MacBook Pro" required>
             </div>
 
             <!-- Campo de Número de Serie -->
             <div class="mb-3">
                 <label for="numSerie" class="form-label">Número de Serie</label>
-                <input type="text" class="form-control" id="numSerie" placeholder="Escribe el número de serie" required>
+                <input type="text" class="form-control" id="inventarioSerie" name="inventarioSerie" placeholder="Escribe el número de serie" required>
             </div>
 
             <!-- Campo de Número de Teléfono -->
             <div class="mb-3">
                 <label for="telefono" class="form-label">Número de Teléfono</label>
-                <input type="tel" class="form-control" id="telefono" placeholder="Ej. +1234567890" required>
+                <input type="tel" class="form-control" id="inventarioTelefono" name="inventarioTelefono" placeholder="Ej. +1234567890" required>
             </div>
 
             <!-- Campo de Funcional -->
@@ -59,7 +59,7 @@
             <!-- Campo de Observaciones -->
             <div class="mb-3">
                 <label for="observaciones" class="form-label">Observaciones</label>
-                <textarea class="form-control" id="observaciones" rows="3" placeholder="Escribe cualquier observación adicional"></textarea>
+                <textarea class="form-control" id="inventarioObservaciones" name="inventarioObservaciones" rows="3" placeholder="Escribe cualquier observación adicional"></textarea>
             </div>
 
             <!-- Botón de Enviar -->

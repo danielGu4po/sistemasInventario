@@ -28,7 +28,7 @@
             <!-- Opción 1 -->
             <div class="col-12 col-sm-6 col-md-4 mb-4">
                 <div class="card h-100">
-                    <a href="">
+                    <a href="{{ url('/inventarioComputo') }}">
                         <img src="/images/ordenador.png" class="card-img-top" alt="Vista 1">
                     </a>
                 </div>

@@ -12,9 +12,21 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        $inventarios = invetario::all();
-        return view('inventarios.index',compact('inventarios'));
+
     }
+
+    public function showFormularioComputo()
+    {
+        $datosGeneral = invetario::all();
+        return view('inventarios.index',compact('datosGeneral'));
+    }
+
+    public function computo()
+    {
+        $datosComputo = invetario::all();
+        return view('inventarios.formularioComputo', compact('datosComputo'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
