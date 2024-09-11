@@ -25,8 +25,5 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function vistaGeneral()
-    {
-        return view('vistaGeneral');
-    }
+    
 }
