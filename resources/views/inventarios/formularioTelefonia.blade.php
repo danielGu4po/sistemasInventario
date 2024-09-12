@@ -121,7 +121,7 @@
             </div>
 
             <!-- Botón de Enviar -->
-            <button type="submit" class="btn btn-primary">Registrar Dispositivo</button>
+            <button type="submit" class="btn btn-success">Registrar Dispositivo</button>
         </form>
         <!-- Fin del formulario -->
     </div>
