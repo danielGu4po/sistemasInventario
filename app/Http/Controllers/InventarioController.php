@@ -35,6 +35,15 @@ class InventarioController extends Controller
         return view('inventarios.formularioRedes');
     }
 
+    public function miscellaneo()
+    {
+        return view('inventarios.formularioMiscellaneo');
+    }
+    public function telefonia()
+    {
+        return view('inventarios.formularioTelefonia');
+    }
+
 
     /**
      * Show the form for creating a new resource.

@@ -76,13 +76,13 @@
                 </a>
             </div>
             <div class="col-md-3">
-                <a href="" class="buttonAdmin">
-                    <i class="fas fa-mouse fasIcon"></i>
-                    <div>Misceláneo</div>
+                <a href="{{url('/inventarioMiscellaneo')}}" class="buttonAdmin">
+                        <i class="fas fa-mouse fasIcon"></i>
+                        <div>Misceláneo</div>
                 </a>
             </div>
             <div class="col-md-3">
-                <a href="" class="buttonAdmin">
+                <a href="{{url('/inventarioTelefonia')}}" class="buttonAdmin">
                     <i class="fas fa-phone-volume fasIcon"></i>
                     <div>Telefonía</div>
                 </a>

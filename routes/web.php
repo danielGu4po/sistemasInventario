@@ -17,6 +17,8 @@ Route::resource('/invetario', InventarioController::class);
 Route::get('/inventarioComputo', [InventarioController::class, 'computo']);
 Route::get('/indexGeneral',[InventarioController::class, 'showFormularioComputo']);
 Route::get('/inventarioRedes', [InventarioController::class, 'redes']);
+Route::get('/inventarioMiscellaneo', [InventarioController::class, 'miscellaneo']);
+Route::get('/inventarioTelefonia', [InventarioController::class, 'telefonia']);
 /**Rutas de Inventario */
 
 Auth::routes();
