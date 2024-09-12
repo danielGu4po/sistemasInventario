@@ -59,7 +59,29 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $count = is_array($request->inventarioModelo) ? count($request->inventarioModelo) : 0;
+
+        for ($i = 0; $i < $count; $i++) {
+            $registroInventario = new invetario();
+
+            $registroInventario->inventarioMarca = $request->inventarioMarca[$i] ?? '';
+            $registroInventario->inventarioModelo = $request->inventarioModelo[$i] ?? '';
+            $registroInventario->inventarioSerie = $request->inventarioSerie[$i] ?? '';
+            $registroInventario->inventarioEstado = $request->inventarioEstado[$i] ?? '';
+            $registroInventario->inventarioObservaciones = $request->inventarioObservaciones[$i] ?? '';
+            $registroInventario->inventarioRAM = $request->inventarioRAM[$i] ?? '';
+            $registroInventario->inventarioAlmacenamiento = $request->inventarioAlmacenamiento[$i] ?? 'N/A';
+            $registroInventario->inventarioContraseña = $request->inventarioContraseña[$i] ?? 'N/A';
+            $registroInventario->inventarioNumTel = $request->inventarioNumTel[$i] ?? 'N/A';
+            $registroInventario->inventarioLineaTel = $request->inventarioLineaTel[$i] ?? 'N/A';
+            $registroInventario->inventarioAsignado = false;
+            $registroInventario->inventarioCategoria = $request->inventarioCategoria;
+
+            $registroInventario->save();
+
+        }
+
+        return redirect('/indexGeneral');
     }
 
     /**
