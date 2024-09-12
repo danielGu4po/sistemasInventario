@@ -72,7 +72,7 @@ class InventarioController extends Controller
         $registroInventario->inventarioObservaciones = $request->input('inventarioObservaciones');
     
         // Proporcionar un valor por defecto para inventarioEstado
-        $registroInventario->inventarioEstado = 'activo'; // O el valor que desees por defecto
+        $registroInventario->inventarioEstado = $request->input('inventarioEstado'); // O el valor que desees por defecto
     
         $registroInventario->inventarioAsignado = false; // Por defecto no asignado
     

@@ -14,7 +14,9 @@
         <h2 class="text-center mb-4">Formulario de Registro de Dispositivo</h2>
         
         <!-- Inicio del formulario -->
-        <form>
+        <form id="inventarioForm" action="{{ url('/inventario') }}" method="POST">
+        @csrf
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
             <!-- Campo de Marca -->
             <div class="mb-3">
                 <label for="marca" class="form-label">Marca</label>
@@ -24,7 +26,7 @@
             <!-- Campo de Modelo -->
             <div class="mb-3">
                 <label for="modelo" class="form-label">Modelo</label>
-                <input type="text" class="form-control" id="inventarioModelo" name="inventarioMarca" placeholder="" required>
+                <input type="text" class="form-control" id="inventarioModelo" name="inventarioModelo" placeholder="" required>
             </div>
 
             <!-- Campo de Número de Serie -->
