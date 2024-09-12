@@ -91,7 +91,7 @@
                                         <a href="{{route('asignar.index')}}" style="cursor: pointer">{{ __('Index General ') }}<i class="fas fa-list"></i></a>
                                     </li>
                                     <li>
-                                    <a href="{{ url('/invetario') }}" style="cursor: pointer">{{ __('Equipos ') }}<i class="far fa-window-restore"></i></a>
+                                    <a href="{{ route('asignar.create') }}" style="cursor: pointer">{{ __('Equipos ') }}<i class="far fa-window-restore"></i></a>
                                     </li>
                                 </ul>
                             </li>

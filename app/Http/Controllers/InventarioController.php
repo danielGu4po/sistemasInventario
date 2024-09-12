@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\invetario;
+use App\Models\inventario;
 
 class InventarioController extends Controller
 {
@@ -21,13 +21,13 @@ class InventarioController extends Controller
 
     public function showFormularioComputo(Request $request)
     {
-        $datosGeneral = invetario::all();
+        $datosGeneral = inventario::all();
         return view('inventarios.vistaGeneral',compact('datosGeneral'));
     }
 
     public function computo()
     {
-        $datosComputo = invetario::all();
+        $datosComputo = inventario::all();
         return view('inventarios.formularioComputo', compact('datosComputo'));
     }
     public function redes()
@@ -62,7 +62,7 @@ class InventarioController extends Controller
         $count = is_array($request->inventarioModelo) ? count($request->inventarioModelo) : 0;
 
         for ($i = 0; $i < $count; $i++) {
-            $registroInventario = new invetario();
+            $registroInventario = new inventario();
 
             $registroInventario->inventarioMarca = $request->inventarioMarca[$i] ?? '';
             $registroInventario->inventarioModelo = $request->inventarioModelo[$i] ?? '';
