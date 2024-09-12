@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container mt-3">
-    <h1 class="mb-4">Formulario de Registro de Dispositivo</h1>
+    <h1 class="mb-4">Computó</h1>
     <form action="{{ url('/inventario') }}" method="POST">
         @csrf
         <style>

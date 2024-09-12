@@ -1,20 +1,8 @@
 @extends('layouts.app')
-
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Dispositivo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <h2 class="text-center mb-4">Formulario de Registro de Dispositivo</h2>
-        
-        <!-- Inicio del formulario -->
-        <form id="inventarioForm" action="{{ url('/inventario') }}" method="POST">
+<div class="container mt-3">
+    <h2 class="text-center mb-4">Redes</h2>
+    <form action="{{ url('/inventario') }}" method="POST">
         @csrf
         <style>
             @import url(https://fonts.googleapis.com/css?family=Merriweather:700);
@@ -22,6 +10,7 @@
             h6 {
                 border-collapse: separate;
                 border-spacing: 16px 0;
+                border-spacing: 1rem 0;
                 color: #123;
                 display: table;
                 font-family: arial;
@@ -70,58 +59,48 @@
             }
         </style>
         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+        <input type="hidden" name="inventarioCategoria" value="Redes">
         <h6>Datos Generales</h6>
         <div class="row">
-            <!-- Campo de Marca -->
-            <div class="col-4">
-                <label for="marca" class="form-label">Marca</label>
-                <input type="text" class="form-control" id="inventarioMarca" name="inventarioMarca" placeholder="" required>
-            </div>
-
-            <!-- Campo de Modelo -->
-            <div class="col-4">
-                <label for="modelo" class="form-label">Modelo</label>
-                <input type="text" class="form-control" id="inventarioModelo" name="inventarioModelo" placeholder="" required>
-            </div>
-
-            <!-- Campo de Número de Serie -->
-            <div class="col-4">
-                <label for="numSerie" class="form-label">Número de Serie</label>
-                <input type="text" class="form-control" id="inventarioSerie" name="inventarioSerie" placeholder="Escribe el número de serie" required>
-            </div>
-            </div>
-            <h6>Funcionalidad</h6>
-            <!-- Campo de Funcional -->
-            <div class="mb-3 text-center">
-                    <div class="d-flex justify-content-center">
-                        <div class="form-check me-3">
-                            <input class="form-check-input" type="radio" name="inventarioEstado" id="inventarioEstadoSi" value="sí" required>
-                            <label class="form-check-label" for="inventarioEstadoSi">
-                                Sí
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="inventarioEstado" id="inventarioEstadoNo" value="no">
-                            <label class="form-check-label" for="inventarioEstadoNo">
-                                No
-                            </label>
-                        </div>
-                    </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="inventarioModelo" class="col-form-label">Modelo:</label>
+                    <input type="text" name="inventarioModelo" id="inventarioModelo" class="form-control">
                 </div>
-                <h6>Observaciones</h6>
-            <!-- Campo de Observaciones -->
-            <div class="mb-3">
-                <textarea class="form-control" id="inventarioObservaciones" name="inventarioObservaciones" rows="3" placeholder="Escribe cualquier observación adicional"></textarea>
             </div>
-
-            <!-- Botón de Enviar -->
-            <button type="submit" class="btn btn-success">Registrar Dispositivo</button>
-        </form>
-        <!-- Fin del formulario -->
-    </div>
-
-    <!-- JS de Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="inventarioMarca" class="col-form-label">Marca:</label>
+                    <input type="text" name="inventarioMarca" id="inventarioMarca" class="form-control">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="inventarioSerie" class="col-form-label">No. Serie:</label>
+                    <input type="text" name="inventarioSerie" id="inventarioSerie" class="form-control">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="inventarioEstado" class="col-form-label">Estado:</label>
+                    <select class="form-select" name="inventarioEstado" id="inventarioEstado">
+                        <option value="Funcional">Funcional</option>
+                        <option value="No Funcional">No Funcional</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <h6>Observaciones</h6>
+        <div class="col-md-12">
+            <textarea name="inventarioObservaciones" id="inventarioObservaciones" class="form-control" placeholder=""></textarea>
+        </div>
+        <div class="row justify-content-start text-center mt-5">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block" id="btnEnviar">
+                    Registrar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
 @endsection
