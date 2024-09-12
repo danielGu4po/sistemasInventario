@@ -67,6 +67,7 @@ class InventarioController extends Controller
         $registroInventario->inventarioModelo = $request->input('inventarioModelo');
         $registroInventario->inventarioSerie = $request->input('inventarioSerie');
         $registroInventario->inventarioRAM = $request->input('inventarioRam');
+        $registroInventario->inventarioNumTel = $request->input('inventarioNumTel');
         $registroInventario->inventarioAlmacenamiento = $request->input('inventarioAlmacenamiento');
         $registroInventario->inventarioContraseña = $request->input('inventarioContraseña');
         $registroInventario->inventarioObservaciones = $request->input('inventarioObservaciones');

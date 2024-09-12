@@ -9,4 +9,9 @@ class asignar extends Model
 {
     protected $table = 'asignar';
     use HasFactory;
+
+    public function inventario()
+    {
+        return $this->belongsTo(inventario::class,'id_inventario');
+    }
 }

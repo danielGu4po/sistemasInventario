@@ -9,4 +9,6 @@ class inventario extends Model
 {
     protected $table = 'inventario';
     use HasFactory;
+
+
 }

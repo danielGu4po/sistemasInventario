@@ -93,7 +93,7 @@
                         <!-- Campo de Número de Teléfono -->
                         <div class="col-md-6 mb-3">
                             <label for="telefono" class="form-label">Número de Teléfono</label>
-                            <input type="tel" class="form-control" id="inventarioTelefono" name="inventarioTelefono" placeholder="Ej. +1234567890" required>
+                            <input type="tel" class="form-control" id="inventarioNumTel" name="inventarioNumTel" placeholder="Ej. +1234567890" required>
                         </div>
                     </div>
                     <h6>Funcionalidad</h6>

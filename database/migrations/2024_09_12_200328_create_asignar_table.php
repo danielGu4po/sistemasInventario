@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('asignarEquipoNombre');
             $table->string('asignarUsuarioNombre');
             $table->text('asignarEquipoCorreo');
+            $table->unsignedBigInteger('id_inventario');
+            $table->foreign('id_inventario')->references('id')->on('inventario');
             $table->timestamps();
         });
     }

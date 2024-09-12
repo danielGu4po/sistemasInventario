@@ -104,7 +104,19 @@
                     <input type="text" name="asignarEquipoCorreo" id="asignarEquipoCorreo" class="form-control" required>
                 </div>
             </div>
-        </div>
+                                    <div class="col-4">
+                            <div class="form-group">
+                                <label for="inventarioAsignado">Inventario</label>
+                                <select name="inventarioAsignado" id="inventarioAsignado" class="form-control" required>
+                                    <option value="">Seleccione un ítem</option>
+                                    @foreach($inventarios as $inventario)
+                                        <option value="{{ $inventario->id }}">
+                                            {{ $inventario->inventarioMarca }} - {{ $inventario->inventarioSerie }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
         <button type="submit" class="btn btn-success">Asignar Ítem</button>
     </form>
 </div>
