@@ -90,9 +90,9 @@
                 <input type="text" class="form-control" id="inventarioSerie" name="inventarioSerie" placeholder="Escribe el número de serie" required>
             </div>
             </div>
+            <h6>Funcionalidad</h6>
             <!-- Campo de Funcional -->
             <div class="mb-3 text-center">
-                    <label class="form-label">Funcional</label>
                     <div class="d-flex justify-content-center">
                         <div class="form-check me-3">
                             <input class="form-check-input" type="radio" name="inventarioEstado" id="inventarioEstadoSi" value="sí" required>
@@ -109,10 +109,9 @@
                     </div>
                 </div>
 
-
+                <h6>Observaciones</h6>
             <!-- Campo de Observaciones -->
             <div class="mb-3">
-                <label for="observaciones" class="form-label">Observaciones</label>
                 <textarea class="form-control" id="inventarioObservaciones" name="inventarioObservaciones" rows="3" placeholder="Escribe cualquier observación adicional"></textarea>
             </div>
 
