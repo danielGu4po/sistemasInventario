@@ -6,7 +6,6 @@
         @csrf
         <style>
             @import url(https://fonts.googleapis.com/css?family=Merriweather:700);
-
             h6 {
                 border-collapse: separate;
                 border-spacing: 16px 0;
@@ -24,18 +23,15 @@
                 white-space: nowrap;
                 width: 100%;
             }
-
             h6 {
                 font-size: 1.25em;
             }
-
             h6:before {
                 border-top: 3px double #123;
                 content: '';
                 display: table-cell;
                 width: 5%;
             }
-
             h6:after {
                 border-top: 3px double #123;
                 content: '';
