@@ -11,6 +11,7 @@ Route::get('/', function () {
 /**Rutas de CRUD para Asignaciones */
 Route::resource('/asignar', AsignarController::class);
 /**Rutas de CRUD para Asignaciones */
+Route::post('/inventario', [InventarioController::class, 'store']);
 
 /**Rutas de Inventario */
 Route::resource('/inventario', InventarioController::class);
