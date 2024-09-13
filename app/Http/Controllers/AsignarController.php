@@ -61,16 +61,12 @@ class AsignarController extends Controller
     $asignacion->asignarEquipoNombre = $request->asignarEquipoNombre;
     $asignacion->asignarUsuarioNombre = $request->asignarUsuarioNombre;
     $asignacion->asignarEquipoCorreo = $request->asignarEquipoCorreo;
-    $asignacion->id_inventario = $request->inventarioAsignado; // Asignar el ID del inventario seleccionado
+    $asignacion->id_inventario = $request->inventarioAsignado;
     $asignacion->save();
-
-    // Actualizar el campo inventarioAsignado en la tabla inventario
-    $inventario = Inventario::find($request->inventarioAsignado);
-    $inventario->inventarioAsignado = 1; // O el valor correspondiente que quieras asignar
+    $inventario = Inventario::find($request->id_inventario);
+    $inventario->inventarioAsignado = true;
     $inventario->save();
-
-    // Redirigir después de guardar la asignación y actualizar inventario
-    return redirect()->route('asignaciones.index')->with('success', 'Ítem asignado correctamente y actualizado en inventario.');
+    return redirect()->route('asignar.index')->with('success', 'Ítem asignado correctamente y actualizado en inventario.');
 }
 
     

@@ -13,7 +13,10 @@
                     <th>Número de Empleado</th>
                     <th>Puesto</th>
                     <th>Departamento</th>
-                    <th>Correo Electronico</th>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>No. Serie</th>
+                    <th>Observaciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +26,10 @@
                         <td>{{ $asignacion->asignarNoEmpleado }}</td>
                         <td>{{ $asignacion->asignarPuesto }}</td>
                         <td>{{ $asignacion->asignarDepartamento }}</td>
-                        <td>{{ $asignacion->asignarEquipoCorreo }}</td>
+                        <td>{{ $asignacion->inventario->inventarioModelo }}</td>
+                        <td>{{ $asignacion->inventario->inventarioMarca }}</td>
+                        <td>{{ $asignacion->inventario->inventarioSerie }}</td>
+                        <td>{{$asignacion->inventario->inventarioObservaciones}}</td>
                     </tr>
                 @endforeach
             </tbody>
