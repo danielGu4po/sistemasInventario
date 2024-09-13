@@ -117,7 +117,13 @@
                                 </select>
                             </div>
                         </div>
-        <button type="submit" class="btn btn-success">Asignar Ítem</button>
+
+        <div class="row justify-content-start text-center mt-5">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block" id="btnEnviar">
+                Asignar Ítem
+                </button>
+            </div>
     </form>
 </div>
 @endsection
