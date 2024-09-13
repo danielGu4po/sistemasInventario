@@ -40,22 +40,41 @@ class AsignarController extends Controller
      */
     public function store(Request $request)
     {
-        $asignacion = new asignar();
-        $asignacion->asignarUsuario = $request->asignarUsuario;
-        $asignacion->asignarNoEmpleado = $request->asignarNoEmpleado;
-        $asignacion->asignarPuesto = $request->asignarPuesto;
-        $asignacion->asignarDepartamento = $request->asignarDepartamento;
-        $asignacion->asignarEquipoNombre = $request->asignarEquipoNombre;
-        $asignacion->asignarUsuarioNombre = $request->asignarUsuarioNombre;
-        $asignacion->asignarEquipoCorreo = $request->asignarEquipoCorreo;
-        $asignacion->id_inventario = $request->id_inventario;
-        $asignacion->save();
-        $inventario = inventario::find($request->id_inventario);
-        $inventario->inventarioAsignado = true;
-        $inventario->save();
-        return redirect()->route('asignar.index');
+        // Validar los datos
+        $request->validate([
+            'asignarUsuario' => 'required|string|max:255',
+            'asignarNoEmpleado' => 'required|integer',
+            'asignarPuesto' => 'required|string|max:255',
+            'asignarDepartamento' => 'required|string|max:255',
+            'asignarEquipoNombre' => 'required|string|max:255',
+            'asignarUsuarioNombre' => 'required|string|max:255',
+            'asignarEquipoCorreo' => 'required|string|email|max:255',
+            'inventarioAsignado' => 'required|exists:inventario,id',
+        ]);
+    
+        // Guardar en la tabla `asignar`
+        $asignar = new Asignar();
+        $asignar->asignarUsuario = $request->input('asignarUsuario');
+        $asignar->asignarNoEmpleado = $request->input('asignarNoEmpleado');
+        $asignar->asignarPuesto = $request->input('asignarPuesto');
+        $asignar->asignarDepartamento = $request->input('asignarDepartamento');
+        $asignar->asignarEquipoNombre = $request->input('asignarEquipoNombre');
+        $asignar->asignarUsuarioNombre = $request->input('asignarUsuarioNombre');
+        $asignar->asignarEquipoCorreo = $request->input('asignarEquipoCorreo');
+        $asignar->id_inventario = $request->input('inventarioAsignado');
+        $asignar->save();
+    
+        // Actualizar la tabla `inventario`
+        $inventarioId = $request->input('inventarioAsignado');
+        $inventario = Inventario::find($inventarioId);
+        if ($inventario) {
+            $inventario->inventarioAsignado = true;
+            $inventario->save();
+        }
+    
+        // Redirigir o devolver una respuesta
+        return redirect()->route('asignar.index')->with('success', 'Ítem asignado correctamente.');
     }
-
     
     
     /**

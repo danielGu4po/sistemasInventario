@@ -102,6 +102,7 @@
                 <div class="form-group">
                     <label for="asignarEquipoCorreo">Correo del Equipo</label>
                     <input type="text" name="asignarEquipoCorreo" id="asignarEquipoCorreo" class="form-control" required>
+                    
                 </div>
             </div>
                                     <div class="col-4">
