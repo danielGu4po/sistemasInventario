@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\asignar;
 use App\Models\inventario;
+use PDF;
 
 class AsignarController extends Controller
 {
@@ -86,6 +87,12 @@ class AsignarController extends Controller
         return view('asignaciones.responsiva', compact('asignacion'));
     }
 
+    public function generatePdf($id){
+        $asignacion = asignar::with('inventario')->findOrFail($id);
+        $pdf = PDF::loadView('asignaciones.responsivaPDF',compact('asignacion'));
+        return $pdf->download('asignacion-' . $asignacion->id . '.pdf');
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -107,6 +114,14 @@ class AsignarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $asignacion = asignar::findOrFail($id);
+        $inventario = inventario::find($asignacion->id_inventario);
+        if ($inventario) {
+            $inventario->inventarioAsignado = false;
+            $inventario->save();
+        }
+        $asignacion->delete();
+
+        return redirect()->route('asignar.index');
     }
 }

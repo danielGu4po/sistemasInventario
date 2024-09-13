@@ -96,7 +96,7 @@
                 <div class="col-4">
                     <div class="form-group">
                         <label for="linea" class="form-label">Linea</label>
-                        <input type="tel" class="form-control" id="inventarioNumTel" name="inventarioNumTel" placeholder="Ej. +1234567890" required>
+                        <input type="tel" class="form-control" id="inventarioLineaTel" name="inventarioLineaTel" placeholder="Ej. Telcel, Movistar, etc." required>
                     </div>
                 </div>
                 <div class="col-4">

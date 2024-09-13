@@ -10,6 +10,8 @@ Route::get('/', function () {
 
 /**Rutas de CRUD para Asignaciones */
 Route::resource('/asignar', AsignarController::class);
+Route::get('/asignar/{id}/ver', [AsignarController::class, 'show'])->name('asignar.show');
+Route::delete('/asignar/{id}',[AsignarController::class,'destroy'])->name('asignar.delete');
 /**Rutas de CRUD para Asignaciones */
 Route::post('/inventario', [InventarioController::class, 'store']);
 
@@ -21,6 +23,10 @@ Route::get('/inventarioRedes', [InventarioController::class, 'redes']);
 Route::get('/inventarioMiscellaneo', [InventarioController::class, 'miscellaneo']);
 Route::get('/inventarioTelefonia', [InventarioController::class, 'telefonia']);
 /**Rutas de Inventario */
+
+/**PDF */
+Route::get('/asignar/pdf/{id}', [AsignarController::class, 'generatePdf'])->name('asignar.pdf');
+/**PDF */
 
 Auth::routes();
 

@@ -102,27 +102,28 @@
                 <div class="form-group">
                     <label for="asignarEquipoCorreo">Correo del Equipo</label>
                     <input type="text" name="asignarEquipoCorreo" id="asignarEquipoCorreo" class="form-control" required>
-                    
+
                 </div>
             </div>
-                                    <div class="col-4">
-                            <div class="form-group">
-                                <label for="inventarioAsignado">Inventario</label>
-                                <select name="inventarioAsignado" id="inventarioAsignado" class="form-control" required>
-                                    <option value="">Seleccione un ítem</option>
-                                    @foreach($inventarios as $inventario)
-                                        <option value="{{ $inventario->id }}">
-                                            {{ $inventario->inventarioMarca }} - {{ $inventario->inventarioSerie }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+        </div>
+        <h6>Seleccionar Ítem</h6>
+        <div class="col-md-12">
+            <div class="form-group">
+                <select name="inventarioAsignado" id="inventarioAsignado" class="form-control" required>
+                    <option value="">Seleccione un ítem</option>
+                    @foreach($inventarios as $inventario)
+                    <option value="{{ $inventario->id }}">
+                        {{ $inventario->inventarioMarca }} - {{ $inventario->inventarioSerie }}
+                    </option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
 
         <div class="row justify-content-start text-center mt-5">
             <div class="col-12">
                 <button type="submit" class="btn btn-primary btn-block" id="btnEnviar">
-                Asignar Ítem
+                    Asignar Ítem
                 </button>
             </div>
     </form>

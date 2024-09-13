@@ -76,17 +76,24 @@
         </div>
         <h6>Información funcional</h6>
         <div class="row">
-            <div class="col-4">
+            <div class="col-3">
                 <label for="ram" class="form-label">Capacidad de RAM</label>
-                <input type="text" class="form-control" id="inventarioRam" name="inventarioRam" placeholder="Ej. 8 GB, 16 GB..." required>
+                <input type="text" class="form-control" id="inventarioRAM" name="inventarioRAM" placeholder="Ej. 8 GB, 16 GB..." required>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <label for="almacenamiento" class="form-label">Capacidad de Almacenamiento</label>
                 <input type="text" class="form-control" id="inventarioAlmacenamiento" name="inventarioAlmacenamiento" placeholder="Ej. 256 GB SSD, 1 TB HDD..." required>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <label for="password" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" id="inventarioContraseña" name="inventarioContraseña" placeholder="Escribe la contraseña" required>
+            </div>
+            <div class="col-3">
+                <label for="inventarioEstado" class="col-form-label">Estado:</label>
+                <select class="form-select" name="inventarioEstado" id="inventarioEstado">
+                    <option value="Funcional">Funcional</option>
+                    <option value="No Funcional">No Funcional</option>
+                </select>
             </div>
         </div>
         <h6>Observaciones</h6>

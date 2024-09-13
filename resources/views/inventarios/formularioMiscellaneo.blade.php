@@ -64,19 +64,19 @@
             <div class="col-3">
                 <div class="form-group">
                     <label for="inventarioModelo" class="col-form-label">Modelo:</label>
-                    <input type="text" name="inventarioModelo" id="inventarioModelo" class="form-control">
+                    <input type="text" name="inventarioModelo" id="inventarioModelo" class="form-control" placeholder="Ej. Dell, HP, Lenovo">
                 </div>
             </div>
             <div class="col-3">
                 <div class="form-group">
                     <label for="inventarioMarca" class="col-form-label">Marca:</label>
-                    <input type="text" name="inventarioMarca" id="inventarioMarca" class="form-control">
+                    <input type="text" name="inventarioMarca" id="inventarioMarca" class="form-control" placeholder="Ej. Logitech M90, Logitech ERGO M575">
                 </div>
             </div>
             <div class="col-3">
                 <div class="form-group">
                     <label for="inventarioSerie" class="col-form-label">No. Serie:</label>
-                    <input type="text" name="inventarioSerie" id="inventarioSerie" class="form-control">
+                    <input type="text" name="inventarioSerie" id="inventarioSerie" class="form-control" placeholder="Escribe el número de serie">
                 </div>
             </div>
             <div class="col-3">
@@ -91,7 +91,7 @@
         </div>
         <h6>Observaciones</h6>
         <div class="col-md-12">
-            <textarea name="inventarioObservaciones" id="inventarioObservaciones" class="form-control" placeholder=""></textarea>
+            <textarea name="inventarioObservaciones" id="inventarioObservaciones" class="form-control" placeholder="Escribe cualquier observación adicional"></textarea>
         </div>
         <div class="row justify-content-start text-center mt-5">
             <div class="col-12">
