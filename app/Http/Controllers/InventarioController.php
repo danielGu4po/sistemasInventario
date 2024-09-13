@@ -59,29 +59,29 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
-        // Crea una nueva instancia de Inventario
-        $registroInventario = new Inventario();
-    
-        // Asigna los datos del formulario a los campos del modelo
-        $registroInventario->inventarioMarca = $request->input('inventarioMarca');
-        $registroInventario->inventarioModelo = $request->input('inventarioModelo');
-        $registroInventario->inventarioSerie = $request->input('inventarioSerie');
-        $registroInventario->inventarioRAM = $request->input('inventarioRam');
-        $registroInventario->inventarioNumTel = $request->input('inventarioNumTel');
-        $registroInventario->inventarioAlmacenamiento = $request->input('inventarioAlmacenamiento');
-        $registroInventario->inventarioContraseña = $request->input('inventarioContraseña');
-        $registroInventario->inventarioObservaciones = $request->input('inventarioObservaciones');
-    
-        // Proporcionar un valor por defecto para inventarioEstado
-        $registroInventario->inventarioEstado = $request->input('inventarioEstado'); // O el valor que desees por defecto
-    
-        $registroInventario->inventarioAsignado = false; // Por defecto no asignado
-    
-        // Guarda el registro en la base de datos
-        $registroInventario->save();
-    
-        // Redirige a una página después del guardado
-        return redirect('/indexGeneral')->with('success', 'Dispositivo registrado exitosamente');
+        $count = is_array($request->inventarioModelo) ? count($request->inventarioModelo) : 0;
+
+        for ($i = 0; $i < $count; $i++) {
+            $registroInventario = new Inventario();
+
+            $registroInventario->inventarioMarca = $request->inventarioMarca[$i] ?? '';
+            $registroInventario->inventarioModelo = $request->inventarioModelo[$i] ?? '';
+            $registroInventario->inventarioSerie = $request->inventarioSerie[$i] ?? '';
+            $registroInventario->inventarioEstado = $request->inventarioEstado[$i] ?? '';
+            $registroInventario->inventarioObservaciones = $request->inventarioObservaciones[$i] ?? '';
+            $registroInventario->inventarioRAM = $request->inventarioRAM[$i] ?? '';
+            $registroInventario->inventarioAlmacenamiento = $request->inventarioAlmacenamiento[$i] ?? 'N/A';
+            $registroInventario->inventarioContraseña = $request->inventarioContraseña[$i] ?? 'N/A';
+            $registroInventario->inventarioNumTel = $request->inventarioNumTel[$i] ?? 'N/A';
+            $registroInventario->inventarioLineaTel = $request->inventarioLineaTel[$i] ?? 'N/A';
+            $registroInventario->inventarioAsignado = false;
+            $registroInventario->inventarioCategoria = $request->inventarioCategoria;
+
+            $registroInventario->save();
+
+        }
+
+        return redirect('/indexGeneral');
     }
     
 

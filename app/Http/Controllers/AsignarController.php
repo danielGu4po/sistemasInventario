@@ -39,35 +39,22 @@ class AsignarController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    // Validar los datos que llegan del formulario
-    $validatedData = $request->validate([
-        'asignarUsuario' => 'required|string|max:255',
-        'asignarNoEmpleado' => 'required|integer',
-        'asignarPuesto' => 'required|string|max:255',
-        'asignarDepartamento' => 'required|string|max:255',
-        'asignarEquipoNombre' => 'required|string|max:255',
-        'asignarUsuarioNombre' => 'required|string|max:255',
-        'asignarEquipoCorreo' => 'required|email',
-        'inventarioAsignado' => 'required|integer|exists:inventario,id', // Validar que exista en la tabla inventario
-    ]);
-
-    // Crear una nueva instancia de Asignar y guardar en la tabla asignar
-    $asignacion = new Asignar();
-    $asignacion->asignarUsuario = $request->asignarUsuario;
-    $asignacion->asignarNoEmpleado = $request->asignarNoEmpleado;
-    $asignacion->asignarPuesto = $request->asignarPuesto;
-    $asignacion->asignarDepartamento = $request->asignarDepartamento;
-    $asignacion->asignarEquipoNombre = $request->asignarEquipoNombre;
-    $asignacion->asignarUsuarioNombre = $request->asignarUsuarioNombre;
-    $asignacion->asignarEquipoCorreo = $request->asignarEquipoCorreo;
-    $asignacion->id_inventario = $request->inventarioAsignado;
-    $asignacion->save();
-    $inventario = Inventario::find($request->id_inventario);
-    $inventario->inventarioAsignado = true;
-    $inventario->save();
-    return redirect()->route('asignar.index')->with('success', 'Ítem asignado correctamente y actualizado en inventario.');
-}
+    {
+        $asignacion = new asignar();
+        $asignacion->asignarUsuario = $request->asignarUsuario;
+        $asignacion->asignarNoEmpleado = $request->asignarNoEmpleado;
+        $asignacion->asignarPuesto = $request->asignarPuesto;
+        $asignacion->asignarDepartamento = $request->asignarDepartamento;
+        $asignacion->asignarEquipoNombre = $request->asignarEquipoNombre;
+        $asignacion->asignarUsuarioNombre = $request->asignarUsuarioNombre;
+        $asignacion->asignarEquipoCorreo = $request->asignarEquipoCorreo;
+        $asignacion->id_inventario = $request->id_inventario;
+        $asignacion->save();
+        $inventario = inventario::find($request->id_inventario);
+        $inventario->inventarioAsignado = true;
+        $inventario->save();
+        return redirect()->route('asignar.index');
+    }
 
     
     
