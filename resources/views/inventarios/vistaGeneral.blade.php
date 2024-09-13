@@ -14,6 +14,8 @@
                     <th>No. Serie</th>
                     <th>Estado</th>
                     <th>Observaciones</th>
+                    <th>Asignado</th>
+                    <th>Categoría</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +30,8 @@
                             </span>
                         </td>
                         <td>{{ $item->inventarioObservaciones }}</td>
+                        <td>{{$item->inventarioAsignado ? 'Si' : 'No'}}</td>
+                        <td>{{$item->inventarioCategoria}}</td>
                         </td>
                     </tr>
                 @endforeach

@@ -58,6 +58,7 @@
             }
         </style>
         <input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
+        <input type="hidden" name="inventarioCategoria" value="Computo">
         <h6>Datos Generales</h6>
         <div class="row">
             <div class="col-4">

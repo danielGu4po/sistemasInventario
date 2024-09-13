@@ -20,16 +20,16 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($asignacion as $asignaciones)
+                @foreach($asignaciones as $asignacion)
                     <tr>
-                        <td>{{ $asignaciones->asignarUsuario }}</td>
-                        <td>{{ $asignaciones->asignarNoEmpleado }}</td>
-                        <td>{{ $asignaciones->asignarPuesto }}</td>
-                        <td>{{ $asignaciones->asignarDepartamento }}</td>
-                        <td>{{ $asignaciones->inventario->inventarioModelo }}</td>
-                        <td>{{ $asignaciones->inventario->inventarioMarca }}</td>
-                        <td>{{ $asignaciones->inventario->inventarioSerie }}</td>
-                        <td>{{$asignaciones->inventario->inventarioObservaciones}}</td>
+                        <td>{{ $asignacion->asignarUsuario }}</td>
+                        <td>{{ $asignacion->asignarNoEmpleado }}</td>
+                        <td>{{ $asignacion->asignarPuesto }}</td>
+                        <td>{{ $asignacion->asignarDepartamento }}</td>
+                        <td>{{ $asignacion->inventario->inventarioModelo }}</td>
+                        <td>{{ $asignacion->inventario->inventarioMarca }}</td>
+                        <td>{{ $asignacion->inventario->inventarioSerie }}</td>
+                        <td>{{$asignacion->inventario->inventarioObservaciones}}</td>
                     </tr>
                 @endforeach
             </tbody>
