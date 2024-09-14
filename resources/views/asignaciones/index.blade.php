@@ -6,7 +6,7 @@
     @if($asignaciones->isEmpty())
     <p>No hay asignaciones disponibles.</p>
     @else
-    <table class="table table-striped">
+    <table class="table table-striped" id="asignacionesTable">
         <thead>
             <tr>
                 <th>Empleado</th>
@@ -40,4 +40,26 @@
     </table>
     @endif
 </div>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Inicializar DataTables con las opciones correctas
+        $('#asignacionesTable').DataTable({
+            "paging": true,
+            "lengthMenu": [5, 10, 25, 50, 100],
+            "pageLength": 10,
+            "ordering": true,
+            "info": true,
+            "searching": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/Spanish.json"
+            }
+        });
+    });
+</script>
+
 @endsection
