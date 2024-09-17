@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AsignarController;
 use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\ExcelController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +28,10 @@ Route::get('/inventarioTelefonia', [InventarioController::class, 'telefonia']);
 /**PDF */
 Route::get('/asignar/pdf/{id}', [AsignarController::class, 'generatePdf'])->name('asignar.pdf');
 /**PDF */
+
+/**MATRIZ de Asignación */
+Route::get('/export',[ExcelController::class,'export'])->name('export.excel');
+/**MATRIZ de Asignación */
 
 Auth::routes();
 

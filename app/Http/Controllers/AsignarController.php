@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\asignar;
 use App\Models\inventario;
 use PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AsignacionesExport;
 
 class AsignarController extends Controller
 {
@@ -96,6 +98,10 @@ class AsignarController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+
+     public function exportarExcel(){
+        return Excel::download(new AsignacionesExport, 'asignaciones.xlsx');
+     }
     public function edit(string $id)
     {
         //

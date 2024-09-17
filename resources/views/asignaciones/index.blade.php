@@ -39,6 +39,10 @@
         </tbody>
     </table>
     @endif
+
+    <div class="text-center mt-4">
+        <a href="#" class="btn btn-primary">Matriz de Asignación</a>
+    </div>
 </div>
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
@@ -47,7 +51,6 @@
 
 <script>
     $(document).ready(function() {
-        // Inicializar DataTables con las opciones correctas
         $('#asignacionesTable').DataTable({
             "paging": true,
             "lengthMenu": [5, 10, 25, 50, 100],

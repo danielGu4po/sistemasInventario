@@ -6,7 +6,8 @@
     @if($datosGeneral->isEmpty())
         <p>No hay datos disponibles.</p>
     @else
-        <table class="table table-striped">
+        <!-- Agregamos un ID a la tabla para DataTables -->
+        <table class="table table-striped" id="inventarioTable">
             <thead>
                 <tr>
                     <th>Modelo</th>
@@ -30,9 +31,8 @@
                             </span>
                         </td>
                         <td>{{ $item->inventarioObservaciones }}</td>
-                        <td>{{$item->inventarioAsignado ? 'Si' : 'No'}}</td>
-                        <td>{{$item->inventarioCategoria}}</td>
-                        </td>
+                        <td>{{ $item->inventarioAsignado ? 'Si' : 'No' }}</td>
+                        <td>{{ $item->inventarioCategoria }}</td>
                     </tr>
                 @endforeach
             </tbody>
@@ -40,6 +40,7 @@
     @endif
 </div>
 
+<!-- Estilo de estado funcional/no funcional -->
 <style>
     .estado {
         display: inline-block;
@@ -58,5 +59,27 @@
         color: red;
     }
 </style>
+
+<!-- Incluir DataTables y jQuery desde el CDN -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Inicializar DataTables
+        $('#inventarioTable').DataTable({
+            "paging": true,
+            "lengthMenu": [5, 10, 25, 50, 100],
+            "pageLength": 10,
+            "ordering": true,
+            "info": true,
+            "searching": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/Spanish.json" // Traducción al español
+            }
+        });
+    });
+</script>
 
 @endsection
