@@ -99,7 +99,7 @@
                         <td>{{$asignacion->inventario->inventarioMarca}} / {{$asignacion->inventario->inventarioModelo}}</td>
                         <td>{{$asignacion->inventario->inventarioAlmacenamiento}} / {{$asignacion->inventario->inventarioRAM}}</td>
                         <td>{{$asignacion->inventario->inventarioSerie}}</td>
-                        <td>{{$asignacion->inventario->inventarioEstado}}</td>
+                        <td>{{ $asignacion->inventario->inventarioObservaciones }}</td>
                     </tr>
                 </tbody>
             </table>
