@@ -195,6 +195,9 @@
     </div>
 
     <!-- Página 2: Obligaciones del Usuario -->
+    <div class="header">
+            <img src="img/topo-logo.png" alt="Logo" style="height: 30px; float: left;">
+        </div>
     <div class="page">
         <div class="content">
             <h2>Obligaciones del usuario</h2>
