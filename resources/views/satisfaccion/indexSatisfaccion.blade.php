@@ -32,17 +32,13 @@
                 <td>{{ $evaluacion->categoriaServicio }}</td>
                 <td>{{ $evaluacion->categoriaEvaluador }}</td>
                 <td>
-                    <a href="{{ route('satisfaccion.show', $evaluacion->id) }}" class="btn btn-info btn-sm">Ver</a>
+                <a href="{{ route('satisfaccion.formato', $evaluacion->id) }}" class="btn btn-info btn-sm">Ver</a>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
     @endif
-
-    <div class="text-center mt-4">
-        <a href="#" class="btn btn-primary">Matriz de Satisfaccion</a>
-    </div>
 </div>
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">

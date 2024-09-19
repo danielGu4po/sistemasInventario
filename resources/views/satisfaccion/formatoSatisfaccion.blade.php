@@ -43,19 +43,19 @@
             <table class="table">
                 <tr>
                     <th>Numero de Usuario:</th>
-                    <td>{{$asignacion->asignarUsuario}}</td>
+                    <td>{{ $evaluacion->numUsuario }}</td>
                 </tr>
                 <tr>
                     <th>Nombre del prestador</th>
-                    <td>{{$asignacion->asignarNoEmpleado}}</td>
+                    <td>{{ $evaluacion->nombrePrestador }}</td>
                 </tr>
                 <tr>
                     <th>Fecha de Evaluacion:</th>
-                    <td>{{$asignacion->asignarPuesto}}</td>
+                    <td>{{ \Carbon\Carbon::parse($evaluacion->fechaEvaluacion)->format('Y/m/d') }}</td>
                 </tr>
                 <tr>
                     <th>Evaluador:</th>
-                    <td>{{$asignacion->asignarDepartamento}}</td>
+                    <td>{{ $evaluacion->evaluador }}</td>
                 </tr>
             </table>
         </div>
@@ -63,19 +63,19 @@
             <table class="table">
                 <tr>
                     <th>Periodo:</th>
-                    <td>{{$asignacion->asignarEquipoNombre}}</td>
+                    <td>{{ $evaluacion->periodo }}</td>
                 </tr>
                 <tr>
                     <th>Numero de Evaluacion:</th>
-                    <td>{{$asignacion->asignarUsuarioNombre}}</td>
+                    <td>{{ $evaluacion->numEvaluacion }}</td>
                 </tr>
                 <tr>
                     <th>Categoria de Servicio:</th>
-                    <td>{{$asignacion->inventario->inventarioContraseña}}</td>
+                    <td>{{ $evaluacion->categoriaServicio }}</td>
                 </tr>
                 <tr>
                     <th>Categoria de Evaluador:</th>
-                    <td>{{$asignacion->asignarEquipoCorreo}}</td>
+                    <td>{{ $evaluacion->categoriaEvaluador }}</td>
                 </tr>
             </table>
         </div>
@@ -86,14 +86,23 @@
             <table class="table table-striped w-100">
                 <thead>
                     <tr>
-                        <th>Marca y modelo</th>
-                        <th>Características</th>
+                        <th>Consepto</th>
+                        <th>Cumple</th>
+                        <th>Acciones de mejora</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{$asignacion->inventario->inventarioMarca}} / {{$asignacion->inventario->inventarioModelo}}</td>
-                        <td>{{$asignacion->inventario->inventarioAlmacenamiento}} / {{$asignacion->inventario->inventarioRAM}}</td>
+                        <td>1.-Analiza las necesidades del cliente ofreciendo así un servicio adecuado.<br>
+                            2.-El servicio que se solicita responde a lo que se esperaba y atendido en el tiempo acordado.<br>
+                            3.-Demuestra conocimiento técnico para ejecutar las actividades y cumplir con el cliente.<br>
+                            4.-Implementar procedimiento de seguimiento y correción de las actividades planeadas.<br>
+                            5.-Acato los parámetros establecidos por el cliente para satisfacer las necesidades.<br>
+                            6.-El servicio brindado muestra respeto, y actitudes de trato igualitario y/o desinteresado.<br> </td>
+                            <td>{{ $evaluacion->check1 }} <br> {{ $evaluacion->check2 }} <br>{{ $evaluacion->check3 }}<br>{{ $evaluacion->check4 }}<br>{{ $evaluacion->check5 }}<br>{{ $evaluacion->check6 }}</td>
+                            <td>{{ $evaluacion->accionesMejora1 }} <br>{{ $evaluacion->accionesMejora2 }}<br>{{ $evaluacion->accionesMejora3 }}<br>{{ $evaluacion->accionesMejora4 }}<br>{{ $evaluacion->accionesMejora5 }}<br>{{ $evaluacion->accionesMejora6 }}</td>
+                            
+
                         
                     </tr>
                 </tbody>
@@ -101,12 +110,13 @@
         </div>
     </div>
     <div class="center-buttons">
-        <form action="{{ route('asignar.destroy', $asignacion->id) }}" method="POST">
+        <form action="{{ route('asignar.destroy', $evaluacion->id) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger">Quitar Asignación</button>
+            <button type="submit" class="btn btn-danger">Borrar</button>
         </form>
-        <a href="{{ route('asignar.pdf', $asignacion->id) }}" class="btn btn-secondary">Responsiva</a>
+        <a href="{{ route('excel.export2', $evaluacion->id) }}" class="btn btn-secondary">Generar Excel</a>
+
     </div>
 </div>
 </div>

@@ -7,7 +7,6 @@ use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\SatisfaccionController;
 use App\Http\Controllers\ExcelsatisfaccionController;
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -43,14 +42,18 @@ Route::get('/index-satisfaccion', [SatisfaccionController::class, 'index'])->nam
 Route::get('/satisfaccion/{id}', [SatisfaccionController::class, 'show'])->name('satisfaccion.show');
 
 
-
 // Procesar el formulario y guardar los datos en la base de datos (POST)
 Route::post('/satisfaccion', [SatisfaccionController::class, 'store'])->name('satisfaccion.store');
 
 /**Excel Satisfaccion */
-Route::get('/export2', [ExcelsatisfaccionController::class, 'export2'])->name('export2.excel');
+Route::get('/exportar-excel/{id}', [ExcelsatisfaccionController::class, 'export2'])->name('excel.export2');
+
 /**Excel Satisfaccion */
 
+
+
+
+Route::get('/satisfaccion/formato/{id}', [SatisfaccionController::class, 'showFormato'])->name('satisfaccion.formato');
 
 Auth::routes();
 

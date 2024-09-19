@@ -16,12 +16,14 @@ use Carbon\Carbon;
 
 class SatisfaccionController extends Controller
 {
+    // Método para mostrar el formulario de satisfacción
     public function showForm()
     {
         // Retorna la vista llamada encuestaSatisfaccion.blade.php
         return view('satisfaccion.encuestaSatisfaccion');
     }
 
+    // Método para almacenar los datos del formulario en la base de datos
     public function store(Request $request)
     {
         // Validar los datos del formulario
@@ -49,28 +51,42 @@ class SatisfaccionController extends Controller
         ]);
 
         // Crear un nuevo registro en la tabla satisfaccion
-        satisfaccion::create($validatedData);
+        Satisfaccion::create($validatedData);
 
         // Redirigir de nuevo con un mensaje de éxito
         return redirect()->route('satisfaccion.index')->with('success', 'Evaluación guardada correctamente');
     }
-    public function index()
-{
-    $evaluaciones = Satisfaccion::all();
 
-    foreach ($evaluaciones as $evaluacion) {
-        // Si la fecha está en formato 'Y-m-d', Carbon::parse puede manejarla sin problemas
-        $evaluacion->fechaEvaluacion = Carbon::parse($evaluacion->fechaEvaluacion)->format('Y/m/d');
+    // Método para listar todas las evaluaciones
+    public function index()
+    {
+        $evaluaciones = Satisfaccion::all();
+
+        foreach ($evaluaciones as $evaluacion) {
+            // Si la fecha está en formato 'Y-m-d', Carbon::parse puede manejarla sin problemas
+            $evaluacion->fechaEvaluacion = Carbon::parse($evaluacion->fechaEvaluacion)->format('Y/m/d');
+        }
+
+        return view('satisfaccion.indexSatisfaccion', compact('evaluaciones'));
     }
 
-    return view('satisfaccion.indexSatisfaccion', compact('evaluaciones'));
-}
-public function show($id)
-{
-    // Buscar la evaluación en la base de datos
-    $evaluacion = Satisfaccion::findOrFail($id);
+    // Método para mostrar los detalles de una evaluación
+    public function show($id)
+    {
+        // Buscar la evaluación en la base de datos
+        $evaluacion = Satisfaccion::findOrFail($id);
 
-    // Retornar una vista para mostrar los detalles de la evaluación
-    return view('satisfaccion.showSatisfaccion', compact('evaluacion'));
-}
+        // Retornar una vista para mostrar los detalles de la evaluación
+        return view('satisfaccion.showSatisfaccion', compact('evaluacion'));
+    }
+
+    // Método para mostrar el formato de satisfacción
+    public function showFormato($id)
+    {
+        // Encuentra la evaluación por ID
+        $evaluacion = Satisfaccion::findOrFail($id);
+
+        // Retorna la vista formatoSatisfaccion.blade.php con los datos de la evaluación
+        return view('satisfaccion.formatoSatisfaccion', compact('evaluacion'));
+    }
 }
