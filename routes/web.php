@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AsignarController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\SatisfaccionController;
+use App\Http\Controllers\ExcelsatisfaccionController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,6 +35,22 @@ Route::get('/asignar/pdf/{id}', [AsignarController::class, 'generatePdf'])->name
 /**MATRIZ de Asignación */
 Route::get('/export',[ExcelController::class,'export'])->name('export.excel');
 /**MATRIZ de Asignación */
+
+/**satisfaccion */
+Route::get('/satisfaccion', [SatisfaccionController::class, 'showForm'])->name('satisfaccion.form');
+
+Route::get('/index-satisfaccion', [SatisfaccionController::class, 'index'])->name('satisfaccion.index');
+Route::get('/satisfaccion/{id}', [SatisfaccionController::class, 'show'])->name('satisfaccion.show');
+
+
+
+// Procesar el formulario y guardar los datos en la base de datos (POST)
+Route::post('/satisfaccion', [SatisfaccionController::class, 'store'])->name('satisfaccion.store');
+
+/**Excel Satisfaccion */
+Route::get('/export2', [ExcelsatisfaccionController::class, 'export2'])->name('export2.excel');
+/**Excel Satisfaccion */
+
 
 Auth::routes();
 

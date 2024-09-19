@@ -11,7 +11,8 @@ class asignar extends Model
     use HasFactory;
 
     public function inventario()
-    {
-        return $this->belongsTo(inventario::class,'id_inventario');
-    }
+            {
+                return $this->belongsTo(Inventario::class, 'id_inventario');
+            }
+
 }

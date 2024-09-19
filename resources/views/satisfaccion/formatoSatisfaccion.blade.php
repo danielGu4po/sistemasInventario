@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-3">
-    <h1 class="mb-4">Detalles de la Asignación</h1>
+    <h1 class="mb-4">Detalles de Encuesta de Satisfaccion</h1>
 
     <style>
         .center-buttons {
@@ -40,43 +40,41 @@
 
     <div class="row">
         <div class="col-md-6">
-            <h2>Datos del solicitante</h2>
             <table class="table">
                 <tr>
-                    <th>Nombre del Usuario:</th>
+                    <th>Numero de Usuario:</th>
                     <td>{{$asignacion->asignarUsuario}}</td>
                 </tr>
                 <tr>
-                    <th>No. De Empleado:</th>
+                    <th>Nombre del prestador</th>
                     <td>{{$asignacion->asignarNoEmpleado}}</td>
                 </tr>
                 <tr>
-                    <th>Puesto:</th>
+                    <th>Fecha de Evaluacion:</th>
                     <td>{{$asignacion->asignarPuesto}}</td>
                 </tr>
                 <tr>
-                    <th>Departamento:</th>
+                    <th>Evaluador:</th>
                     <td>{{$asignacion->asignarDepartamento}}</td>
                 </tr>
             </table>
         </div>
         <div class="col-md-6">
-            <h2>Datos del ítem solicitado</h2>
             <table class="table">
                 <tr>
-                    <th>Nombre del Equipo:</th>
+                    <th>Periodo:</th>
                     <td>{{$asignacion->asignarEquipoNombre}}</td>
                 </tr>
                 <tr>
-                    <th>Nombre de Usuario:</th>
+                    <th>Numero de Evaluacion:</th>
                     <td>{{$asignacion->asignarUsuarioNombre}}</td>
                 </tr>
                 <tr>
-                    <th>Contraseña:</th>
+                    <th>Categoria de Servicio:</th>
                     <td>{{$asignacion->inventario->inventarioContraseña}}</td>
                 </tr>
                 <tr>
-                    <th>Correo Electrónico:</th>
+                    <th>Categoria de Evaluador:</th>
                     <td>{{$asignacion->asignarEquipoCorreo}}</td>
                 </tr>
             </table>
@@ -84,22 +82,19 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <h2>Detalles del Artículo</h2>
+            <h2>Encuesta Checkbox</h2>
             <table class="table table-striped w-100">
                 <thead>
                     <tr>
                         <th>Marca y modelo</th>
                         <th>Características</th>
-                        <th>No. de serie</th>
-                        <th>Observaciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>{{$asignacion->inventario->inventarioMarca}} / {{$asignacion->inventario->inventarioModelo}}</td>
                         <td>{{$asignacion->inventario->inventarioAlmacenamiento}} / {{$asignacion->inventario->inventarioRAM}}</td>
-                        <td>{{$asignacion->inventario->inventarioSerie}}</td>
-                        <td>{{ $asignacion->inventario->inventarioObservaciones }}</td>
+                        
                     </tr>
                 </tbody>
             </table>
