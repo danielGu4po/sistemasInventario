@@ -41,7 +41,7 @@
     @endif
 
     <div class="text-center mt-4">
-        <a href="#" class="btn btn-primary">Matriz de Asignación</a>
+        <a href="{{route('export.excel')}}" class="btn btn-primary">Matriz de Asignación</a>
     </div>
 </div>
 
