@@ -8,9 +8,6 @@
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Asignado a</th>
-                <th>Correo</th>
-                <th>Memoria RAM</th>
-                <th>Almacenamiento</th>
                 <th>Estado</th>
                 <th>Mantenimiento</th>
             </tr>
