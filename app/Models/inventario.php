@@ -10,5 +10,9 @@ class inventario extends Model
     protected $table = 'inventario';
     use HasFactory;
 
+    public function asignaciones()
+    {
+        return $this->hasMany(asignar::class, 'id_inventario');
+    }
 
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AsignarController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\MantenimientoController;
 use App\Http\Controllers\SatisfaccionController;
 use App\Http\Controllers\ExcelsatisfaccionController;
 
@@ -26,6 +27,14 @@ Route::get('/inventarioRedes', [InventarioController::class, 'redes']);
 Route::get('/inventarioMiscellaneo', [InventarioController::class, 'miscellaneo']);
 Route::get('/inventarioTelefonia', [InventarioController::class, 'telefonia']);
 /**Rutas de Inventario */
+
+/**Rutas para Mttos */
+Route::resource('/mantenimiento', MantenimientoController::class);
+Route::get('/mantenimientoComputo', [MantenimientoController::class,'mttoComputo']);
+Route::get('/mantenimientoRedes', [MantenimientoController::class,'mttoRedes']);
+Route::get('/mantenimientoMiscelaneo', [MantenimientoController::class,'mttoMiscelaneo']);
+Route::get('/mantenimientoTelefonia', [MantenimientoController::class,'mttoTelefonia']);
+/**Rutas para Mttos */
 
 /**PDF */
 Route::get('/asignar/pdf/{id}', [AsignarController::class, 'generatePdf'])->name('asignar.pdf');
