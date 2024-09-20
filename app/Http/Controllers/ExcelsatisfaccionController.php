@@ -199,7 +199,7 @@ class ExcelsatisfaccionController extends Controller
     $sheet->setCellValue('F5', '');
     $sheet->getColumnDimension('F')->setWidth(15);
 
-    $sheet->mergeCells('G5:H5');
+    $sheet->mergeCells('G5');
     $sheet->setCellValue('G5', 'Área/Departamento: ');
     $sheet->getStyle('G5')->applyFromArray([
         'fill' => [
@@ -264,7 +264,7 @@ class ExcelsatisfaccionController extends Controller
     $sheet->setCellValue('M5', '');
     $sheet->getColumnDimension('M')->setWidth(15);
 
-    $sheet->mergeCells('N5');
+    $sheet->mergeCells('N5:O5');
     $sheet->setCellValue('N5', 'Categoría: ');
     $sheet->getStyle('N5')->applyFromArray([
         'fill' => [
@@ -285,44 +285,18 @@ class ExcelsatisfaccionController extends Controller
             ]
         ]
     ]);
-    $sheet->getColumnDimension('N')->setWidth(15);
+    $sheet->getColumnDimension('N')->setWidth(35);
 
-    $sheet->mergeCells('O5');
-    $sheet->setCellValue('O5', 'Encargado TI ');
-    $sheet->getStyle('O5')->applyFromArray($styleArray);
-    $sheet->getColumnDimension('O')->setWidth(15);
+    $sheet->mergeCells('P5:Q5');
+    $sheet->setCellValue('P5', 'Encargado TI ');
+    $sheet->getStyle('P5')->applyFromArray($styleArray);
+    $sheet->getColumnDimension('P')->setWidth(20);
+    $sheet->getColumnDimension('Q')->setWidth(15);
 
     $sheet->mergeCells('P5');
     $sheet->setCellValue('P5', '');
     $sheet->getColumnDimension('P')->setWidth(15);
 
-    $sheet->mergeCells('Q5');
-    $sheet->setCellValue('Q5', 'Categoría: ');
-    $sheet->getStyle('Q5')->applyFromArray([
-        'fill' => [
-            'fillType' => Fill::FILL_SOLID,
-            'startColor' => ['argb' => 'FFCCCCCC']  // Color gris claro
-        ],
-        'font' => [
-            'bold' => true,
-        ],
-        'alignment' => [
-            'horizontal' => Alignment::HORIZONTAL_LEFT,
-            'vertical' => Alignment::VERTICAL_CENTER,
-        ],
-        'borders' => [
-            'allBorders' => [
-                'borderStyle' => Border::BORDER_THIN,
-                'color' => ['argb' => 'FF000000'],
-            ]
-        ]
-    ]);
-    $sheet->getColumnDimension('Q')->setWidth(15);
-
-    $sheet->mergeCells('R5');
-    $sheet->setCellValue('R5', 'Encargado TI ');
-    $sheet->getStyle('R5')->applyFromArray($styleArray);
-    $sheet->getColumnDimension('R')->setWidth(15);
     //CONFIGURACION DE LA PRIMERA FILA DEL ARCHIVO
 
     // TERCER RENGLON
@@ -348,7 +322,7 @@ class ExcelsatisfaccionController extends Controller
         ]
     ]);
     $sheet->getColumnDimension('B')->setWidth(15);
-    $sheet->getRowDimension('7')->setRowHeight(28);
+    $sheet->getRowDimension('C')->setRowHeight(28);
 
     $sheet->mergeCells('D7:E7');
     $sheet->setCellValue('D7', 'campo 2 ');
@@ -417,37 +391,6 @@ class ExcelsatisfaccionController extends Controller
     $sheet->getStyle('O7')->applyFromArray($styleArray);
     $sheet->getColumnDimension('O')->setWidth(15);
 
-    $sheet->mergeCells('P7');
-    $sheet->setCellValue('P7', '');
-    $sheet->getColumnDimension('P')->setWidth(15);
-
-    $sheet->mergeCells('Q7');
-    $sheet->setCellValue('Q7', 'Periodo: ');
-    $sheet->getStyle('Q7')->applyFromArray([
-        'fill' => [
-            'fillType' => Fill::FILL_SOLID,
-            'startColor' => ['argb' => 'FFCCCCCC']  // Color gris claro
-        ],
-        'font' => [
-            'bold' => true,
-        ],
-        'alignment' => [
-            'horizontal' => Alignment::HORIZONTAL_LEFT,
-            'vertical' => Alignment::VERTICAL_CENTER,
-        ],
-        'borders' => [
-            'allBorders' => [
-                'borderStyle' => Border::BORDER_THIN,
-                'color' => ['argb' => 'FF000000'],
-            ]
-        ]
-    ]);
-    $sheet->getColumnDimension('Q')->setWidth(15);
-
-    $sheet->mergeCells('R7');
-    $sheet->setCellValue('R7', '2022-2024 ');
-    $sheet->getStyle('R7')->applyFromArray($styleArray);
-    $sheet->getColumnDimension('R')->setWidth(15);
     //TERCER RENGLON
 
     //CUARTO RENGLON
