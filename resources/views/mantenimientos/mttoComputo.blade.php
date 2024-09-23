@@ -38,7 +38,7 @@
                 <td>{{ $item->inventarioAlmacenamiento }}</td>
                 <td>{{ $item->inventarioEstado }}</td>
                 <td>
-                    <button type="button">Programar Mantenimiento</button>
+                    <a href="{{ route('mantenimiento.show', $item->id) }}" class="btn btn-primary">Programar Mantenimiento</a>
                 </td>
             </tr>
             @endforeach

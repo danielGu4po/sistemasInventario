@@ -34,6 +34,7 @@ Route::get('/mantenimientoComputo', [MantenimientoController::class,'mttoComputo
 Route::get('/mantenimientoRedes', [MantenimientoController::class,'mttoRedes']);
 Route::get('/mantenimientoMiscelaneo', [MantenimientoController::class,'mttoMiscelaneo']);
 Route::get('/mantenimientoTelefonia', [MantenimientoController::class,'mttoTelefonia']);
+Route::get('/mantenimiento/{id}',[MantenimientoController::class, 'show'])->name('mantenimiento.show');
 /**Rutas para Mttos */
 
 /**PDF */

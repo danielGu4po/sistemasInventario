@@ -32,7 +32,7 @@ class MantenimientoController extends Controller
 
     public function mttoComputo()
     {
-        $items = inventario::where('inventarioCategoria','Computo')->with('asignaciones')->get();
+        $items = inventario::where('inventarioCategoria', 'Computo')->with('asignaciones')->get();
         return view('mantenimientos.mttoComputo', compact('items'));
     }
     public function mttoRedes()
@@ -57,15 +57,31 @@ class MantenimientoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'item_id' => 'required|exists:inventario,id',
+            'fecha_mantenimiento' => 'required|date',
+            'detalles_mantenimiento' => 'nullable|string',
+        ]);
+
+        $mantenimiento = new mantenimiento();
+        $mantenimiento->item_id = $request->input('item_id');
+        $mantenimiento->mantenimientoFecha = $request->input('mantenimientoFecha');
+        $mantenimiento->mantenimientoDetalles = $request->input('mantenimientoDetalles');
+        $mantenimiento->save();
+    
+        return redirect()->route('mantenimiento.show', $request->input('item_id'))
+                         ->with('success', 'Mantenimiento programado exitosamente');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+
+        $item = inventario::with('asignaciones')->findOrFail($id);
+
+        return view('mantenimientos.estadisticasItems', compact('item'));
     }
 
     /**
