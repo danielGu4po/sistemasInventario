@@ -1,97 +1,144 @@
 @extends('layouts.app')
 
 @section('content')
-
-<style>
-    @import url(https://fonts.googleapis.com/css?family=Merriweather:700);
-
-    h6 {
-        border-collapse: separate;
-        border-spacing: 16px 0;
-        color: #123;
-        display: table;
-        font-family: arial;
-        font-weight: 700;
-        font-size: 5em;
-        line-height: .25;
-        margin: 1em -15px 0.5em;
-        table-layout: auto;
-        text-align: center;
-        text-shadow: .0625em .0625em 0 rgba(0, 0, 0, .2);
-        white-space: nowrap;
-        width: 100%;
-    }
-
-    h6 {
-        font-size: 1.25em;
-    }
-
-    h6:before {
-        border-top: 3px double #123;
-        content: '';
-        display: table-cell;
-        width: 5%;
-    }
-
-    h6:after {
-        border-top: 3px double #123;
-        content: '';
-        display: table-cell;
-        width: 95%;
-    }
-
-    h6:before {
-        border-top-color: Crimson;
-        border-top-style: ridge;
-    }
-
-    h6:after {
-        border-top-color: Crimson;
-        border-top-style: ridge;
-    }
-
-    textarea {
-        width: 100%;
-        height: 150px;
-    }
-</style>
-
 <div class="container mt-3">
-    <div class="card">
-        <div class="card-header">
-            <h3>Detalles del Mantenimiento</h3>
+    <h1 class="mb-4">Detalles del Mantenimiento</h1>
+
+    <style>
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+        }
+
+        .form-group .form-control,
+        .form-group .form-control-plaintext {
+            width: 100%;
+        }
+
+        .tipo-mantenimiento {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .tipo-mantenimiento label.main {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        [type="radio"] {
+            margin-right: 5px;
+        }
+    </style>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Equipo</h2>
+            <table class="table">
+                <tr>
+                    <th>Marca:</th>
+                    <td>{{ $item->inventarioMarca }}</td>
+                </tr>
+                <tr>
+                    <th>Modelo:</th>
+                    <td>{{ $item->inventarioModelo }}</td>
+                </tr>
+                <tr>
+                    <th>Memoria RAM:</th>
+                    <td>{{ $item->inventarioRAM }}</td>
+                </tr>
+                <tr>
+                    <th>Almacenamiento:</th>
+                    <td>{{ $item->inventarioAlmacenamiento }}</td>
+                </tr>
+                <tr>
+                    <th>Estado:</th>
+                    <td>{{ $item->inventarioEstado }}</td>
+                </tr>
+                <tr>
+                    <th>Observaciones:</th>
+                    <td>{{ $item->inventarioObservaciones }}</td>
+                </tr>
+            </table>
         </div>
-        <div class="card-body">
-            <p><strong>Marca:</strong> {{ $item->inventarioMarca }}</p>
-            <p><strong>Modelo:</strong> {{ $item->inventarioModelo }}</p>
-            <p><strong>Memoria RAM:</strong> {{ $item->inventarioRAM }}</p>
-            <p><strong>Almacenamiento:</strong> {{ $item->inventarioAlmacenamiento }}</p>
-            <p><strong>Estado:</strong> {{ $item->inventarioEstado }}</p>
-            <p><strong>Observaciones:</strong> {{ $item->inventarioObservaciones }}</p>
-
-            @if($item->asignaciones->isNotEmpty())
-            <h4>Información de Asignación:</h4>
-            <p><strong>Asignado a:</strong> {{ $item->asignaciones->first()->asignarUsuarioNombre }}</p>
-            <p><strong>Correo del usuario:</strong> {{ $item->asignaciones->first()->asignarEquipoCorreo }}</p>
+        <div class="col-md-6">
+            <h2>Estadísticas</h2>
+            <ul>
+                <li>Mantenimientos correctivos: {{ $correctivos }}</li>
+                <li>Mantenimientos preventivos: {{ $preventivos }}</li>
+                <li>{{ $sinMtto ? 'Este equipo no ha recibido mantenimiento.' : 'Este equipo ya ha recibido mantenimiento.' }}</li>
+                <li>Promedio de mantenimientos: {{ number_format($promedioMttos, 2) }}</li>
+                <li>Porcentaje de mantenimientos completados: {{ number_format($porcentajeCompletos, 2) }}%</li>
+            </ul>
+            @if($proximosMttos->isNotEmpty())
+            <h3>Próximos mantenimientos programados:</h3>
+            <ul>
+                @foreach($proximosMttos as $mantenimiento)
+                <li>{{ $mantenimiento->mantenimientoFecha }} - {{ $mantenimiento->mantenimientoMtto }}</li>
+                @endforeach
+            </ul>
             @else
-            <p><strong>Asignado a:</strong> No asignado</p>
+            <p>No hay mantenimientos programados.</p>
             @endif
+        </div>
+    </div>
 
-            <h4>Programar Mantenimiento</h4>
+    <div class="row">
+        <div class="col-12">
+            <h2>Programar Mantenimiento</h2>
             <form action="{{ route('mantenimiento.store') }}" method="POST">
                 @csrf
-                <input type="hidden" name="item_id" value="{{ $item->id }}">
-                <div class="form-group">
-                    <label for="mantenimientoFecha">Fecha del Mantenimiento:</label>
-                    <input type="date" class="form-control" id="mantenimientoFecha" name="mantenimientoFecha" required>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="mantenimientoFecha">Trimestre del Mantenimiento:</label>
+                        <select class="form-control" id="mantenimientoFecha" name="mantenimientoFecha">
+                            <option value="Q1">Primer Trimestre (Enero - Marzo)</option>
+                            <option value="Q2">Segundo Trimestre (Abril - Junio)</option>
+                            <option value="Q3">Tercer Trimestre (Julio - Septiembre)</option>
+                            <option value="Q4">Cuarto Trimestre (Octubre - Diciembre)</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="tipo-mantenimiento">
+                            <label class="main">Tipo de Mantenimiento:</label>
+                            <div class="options">
+                                <label>
+                                    <input type="radio" name="mantenimientoMtto" value="Correctivo" checked> Correctivo
+                                </label>
+                                <label>
+                                    <input type="radio" name="mantenimientoMtto" value="Preventivo"> Preventivo
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="mantenimientoDetalles">Detalles del Mantenimiento:</label>
                     <textarea class="form-control" id="mantenimientoDetalles" name="mantenimientoDetalles" rows="3"></textarea>
                 </div>
+
+                <input type="hidden" name="item_id" value="{{ $item->id }}">
                 <button type="submit" class="btn btn-success">Guardar Mantenimiento</button>
             </form>
         </div>
     </div>
 </div>
+
 @endsection

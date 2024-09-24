@@ -44,5 +44,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class="text-center mt-4">
+        <a href="{{ route('descargar.formato.mttos') }}" class="btn btn-primary">Formato de Mttos.</a>
+    </div>
+
 </div>
 @endsection

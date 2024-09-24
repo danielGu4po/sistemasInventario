@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\inventario;
 use App\Models\asignar;
 use App\Models\mantenimiento;
+use Carbon\Carbon;
+
 
 class MantenimientoController extends Controller
 {
@@ -56,22 +58,33 @@ class MantenimientoController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'item_id' => 'required|exists:inventario,id',
-            'fecha_mantenimiento' => 'required|date',
-            'detalles_mantenimiento' => 'nullable|string',
-        ]);
+{
+    $request->validate([
+        'item_id' => 'required|exists:inventario,id',
+        'mantenimientoFecha' => 'required|string',
+        'mantenimientoMtto' => 'required|string',
+        'mantenimientoDetalles' => 'nullable|string',
+    ]);
 
-        $mantenimiento = new mantenimiento();
-        $mantenimiento->item_id = $request->input('item_id');
-        $mantenimiento->mantenimientoFecha = $request->input('mantenimientoFecha');
-        $mantenimiento->mantenimientoDetalles = $request->input('mantenimientoDetalles');
-        $mantenimiento->save();
-    
-        return redirect()->route('mantenimiento.show', $request->input('item_id'))
-                         ->with('success', 'Mantenimiento programado exitosamente');
-    }
+    $year = now()->year;
+    $trimestreInicio = [
+        'Q1' => Carbon::createFromDate($year, 1, 1),
+        'Q2' => Carbon::createFromDate($year, 4, 1),
+        'Q3' => Carbon::createFromDate($year, 7, 1),
+        'Q4' => Carbon::createFromDate($year, 10, 1),
+    ][$request->mantenimientoFecha] ?? null;
+
+    $mantenimiento = new mantenimiento();
+    $mantenimiento->item_id = $request->input('item_id');
+    $mantenimiento->mantenimientoFecha = $trimestreInicio;
+    $mantenimiento->mantenimientoDetalles = $request->input('mantenimientoDetalles');
+    $mantenimiento->mantenimientoMtto = $request->input('mantenimientoMtto');
+    $mantenimiento->save();
+
+    return redirect()->route('mantenimiento.show', $request->input('item_id'))
+        ->with('success', 'Mantenimiento programado exitosamente');
+}
+
 
     /**
      * Display the specified resource.
@@ -81,7 +94,26 @@ class MantenimientoController extends Controller
 
         $item = inventario::with('asignaciones')->findOrFail($id);
 
-        return view('mantenimientos.estadisticasItems', compact('item'));
+        $correctivos = mantenimiento::where('item_id', $id)->where('mantenimientoMtto', 'Correctivo')->count();
+        $preventivos = mantenimiento::where('item_id', $id)->where('mantenimientoMtto', 'Preventivo')->count();
+
+        $sinMtto = mantenimiento::where('item_id',$id)->doesntExist();
+
+        $promedioMttos = mantenimiento::where('item_id',$id)->avg('id');
+
+        $proximosMttos = mantenimiento::where('item_id',$id)
+        ->where('mantenimientoFecha', '>=', now())
+        ->orderBy('mantenimientoFecha','asc')
+        ->get();
+
+        $totalMttos = mantenimiento::where('item_id',$id)->count();
+        $completos = mantenimiento::where('item_id',$id)
+        ->whereNotNull('mantenimientoDetalles')
+        ->count();
+
+        $porcentajeCompletos = $totalMttos > 0 ? ($completos / $totalMttos) * 100 : 0;
+
+        return view('mantenimientos.estadisticasItems', compact('item','preventivos', 'correctivos', 'sinMtto','promedioMttos','porcentajeCompletos','proximosMttos'));
     }
 
     /**

@@ -77,15 +77,6 @@
                                     <li>
                                         <a href="{{url('/mantenimientoComputo')}}" style="cursor: pointer">{{ __('Computó ') }}<i class="fas fa-desktop"></i></a>
                                     </li>
-                                    <li>
-                                        <a href="{{url('/mantenimientoRedes')}}" style="cursor: pointer">{{ __('Redes ') }}<i class="fas fa-network-wired"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="{{url('/mantenimientoMiscelaneo')}}" style="cursor: pointer">{{ __('Misceláneo ') }}<i class="fas fa-mouse"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="{{url('/mantenimientoTelefonia')}}" style="cursor: pointer">{{ __('Telefonía ') }}<i class="fas fa-phone-volume"></i></a>
-                                    </li>
                                 </ul>
                             </li>
                             <li style="font-size: 12px;" class="dropdown">

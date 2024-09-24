@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class mantenimiento extends Model
 {
+    protected $table = 'mantenimientos';
     use HasFactory;
+
+    
+
 }

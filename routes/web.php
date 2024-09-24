@@ -7,7 +7,7 @@ use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\MantenimientoController;
 use App\Http\Controllers\SatisfaccionController;
 use App\Http\Controllers\ExcelsatisfaccionController;
-use App\Http\Controllers\WordController;
+use Illuminate\Support\Facades\Response;
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,7 +39,7 @@ Route::get('/mantenimiento/{id}',[MantenimientoController::class, 'show'])->name
 /**Rutas para Mttos */
 
 /**PDF */
-/**Route::get('/asignar/pdf/{id}', [AsignarController::class, 'generatePdf'])->name('asignar.pdf');
+Route::get('/asignar/pdf/{id}', [AsignarController::class, 'generatePdf'])->name('asignar.pdf');
 /**PDF */
 
 /**MATRIZ de Asignación */
@@ -61,9 +61,14 @@ Route::get('/exportar-excel/{id}', [ExcelsatisfaccionController::class, 'export2
 
 /**Excel Satisfaccion */
 
-/**WORD*/
-Route::get('/asignar/{id}/word', [WordController::class, 'generarResponsiva'])->name('word.responsiva');
-/**WORD*/
+/**Formato para Mttos. */
+Route::get('/descargar-formato-mttos', function () {
+    $path = storage_path('app/public/Formato para Mttos.xlsx'); 
+    return Response::download($path);
+})->name('descargar.formato.mttos');
+/**Formato para Mttos. */
+
+
 
 
 Route::get('/satisfaccion/formato/{id}', [SatisfaccionController::class, 'showFormato'])->name('satisfaccion.formato');
