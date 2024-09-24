@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('item_id');
             $table->date('mantenimientoFecha');
             $table->text('mantenimientoDetalles')->nullable();
+            $table->string('mantenimientoMtto')->nullable();
             $table->timestamps();
 
             $table->foreign('item_id')->references('id')->on('inventario')->onDelete('cascade');
