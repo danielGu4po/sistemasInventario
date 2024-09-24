@@ -111,7 +111,7 @@
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Quitar Asignación</button>
         </form>
-        <a href="{{ route('asignar.pdf', $asignacion->id) }}" class="btn btn-secondary">Responsiva</a>
+        <a href="{{ route('word.responsiva', $asignacion->id) }}" class="btn btn-secondary">Responsiva</a>
     </div>
 </div>
 </div>

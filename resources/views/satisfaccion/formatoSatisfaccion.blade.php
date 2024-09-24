@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-3">
-    <h1 class="mb-4">Detalles de Encuesta de Satisfaccion</h1>
+    <h1 class="mb-4">Detalles de Encuesta de Satisfacción</h1>
 
     <style>
         .center-buttons {
@@ -36,21 +36,28 @@
         .table-bordered td {
             border: 1px solid #dee2e6;
         }
+        th {
+            text-align: left;
+        }
+        td {
+            text-align: left;
+        }
+
     </style>
 
     <div class="row">
         <div class="col-md-6">
             <table class="table">
                 <tr>
-                    <th>Numero de Usuario:</th>
+                    <th>Número de Usuario:</th>
                     <td>{{ $evaluacion->numUsuario }}</td>
                 </tr>
                 <tr>
-                    <th>Nombre del prestador</th>
+                    <th>Nombre del Prestador:</th>
                     <td>{{ $evaluacion->nombrePrestador }}</td>
                 </tr>
                 <tr>
-                    <th>Fecha de Evaluacion:</th>
+                    <th>Fecha de Evaluación:</th>
                     <td>{{ \Carbon\Carbon::parse($evaluacion->fechaEvaluacion)->format('Y/m/d') }}</td>
                 </tr>
                 <tr>
@@ -62,19 +69,19 @@
         <div class="col-md-6">
             <table class="table">
                 <tr>
-                    <th>Periodo:</th>
+                    <th>Período:</th>
                     <td>{{ $evaluacion->periodo }}</td>
                 </tr>
                 <tr>
-                    <th>Numero de Evaluacion:</th>
+                    <th>Número de Evaluación:</th>
                     <td>{{ $evaluacion->numEvaluacion }}</td>
                 </tr>
                 <tr>
-                    <th>Categoria de Servicio:</th>
+                    <th>Categoría de Servicio:</th>
                     <td>{{ $evaluacion->categoriaServicio }}</td>
                 </tr>
                 <tr>
-                    <th>Categoria de Evaluador:</th>
+                    <th>Categoría de Evaluador:</th>
                     <td>{{ $evaluacion->categoriaEvaluador }}</td>
                 </tr>
             </table>
@@ -86,9 +93,9 @@
             <table class="table table-striped w-100">
                 <thead>
                     <tr>
-                        <th>Consepto</th>
-                        <th>Cumple</th>
-                        <th>Acciones de mejora</th>
+                        <th style="text-align: center;">Consepto</th>
+                        <th style="text-align: center;">Cumple</th>
+                        <th style="text-align: center;">Acciones de mejora</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -99,7 +106,14 @@
                             4.-Implementar procedimiento de seguimiento y correción de las actividades planeadas.<br>
                             5.-Acato los parámetros establecidos por el cliente para satisfacer las necesidades.<br>
                             6.-El servicio brindado muestra respeto, y actitudes de trato igualitario y/o desinteresado.<br> </td>
-                            <td>{{ $evaluacion->check1 }} <br> {{ $evaluacion->check2 }} <br>{{ $evaluacion->check3 }}<br>{{ $evaluacion->check4 }}<br>{{ $evaluacion->check5 }}<br>{{ $evaluacion->check6 }}</td>
+                            <td style="text-align: center;">
+                                {{ $evaluacion->check1 }} <br>
+                                {{ $evaluacion->check2 }} <br>
+                                {{ $evaluacion->check3 }} <br>
+                                {{ $evaluacion->check4 }} <br>
+                                {{ $evaluacion->check5 }} <br>
+                                {{ $evaluacion->check6 }}
+                            </td>
                             <td>{{ $evaluacion->accionesMejora1 }} <br>{{ $evaluacion->accionesMejora2 }}<br>{{ $evaluacion->accionesMejora3 }}<br>{{ $evaluacion->accionesMejora4 }}<br>{{ $evaluacion->accionesMejora5 }}<br>{{ $evaluacion->accionesMejora6 }}</td>
                             
 

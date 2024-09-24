@@ -7,6 +7,7 @@ use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\MantenimientoController;
 use App\Http\Controllers\SatisfaccionController;
 use App\Http\Controllers\ExcelsatisfaccionController;
+use App\Http\Controllers\WordController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,7 +39,7 @@ Route::get('/mantenimiento/{id}',[MantenimientoController::class, 'show'])->name
 /**Rutas para Mttos */
 
 /**PDF */
-Route::get('/asignar/pdf/{id}', [AsignarController::class, 'generatePdf'])->name('asignar.pdf');
+/**Route::get('/asignar/pdf/{id}', [AsignarController::class, 'generatePdf'])->name('asignar.pdf');
 /**PDF */
 
 /**MATRIZ de Asignación */
@@ -60,7 +61,9 @@ Route::get('/exportar-excel/{id}', [ExcelsatisfaccionController::class, 'export2
 
 /**Excel Satisfaccion */
 
-
+/**WORD*/
+Route::get('/asignar/{id}/word', [WordController::class, 'generarResponsiva'])->name('word.responsiva');
+/**WORD*/
 
 
 Route::get('/satisfaccion/formato/{id}', [SatisfaccionController::class, 'showFormato'])->name('satisfaccion.formato');

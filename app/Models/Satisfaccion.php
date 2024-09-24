@@ -32,4 +32,10 @@ class Satisfaccion extends Model
         'accionesMejora5',
         'accionesMejora6',
     ];
+    // En el modelo Satisfaccion
+public function asignar()
+{
+    return $this->hasOne(Asignar::class, 'asignarNoEmpleado', 'numUsuario');
+}
+
 }
