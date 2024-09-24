@@ -8,6 +8,7 @@ use App\Http\Controllers\MantenimientoController;
 use App\Http\Controllers\SatisfaccionController;
 use App\Http\Controllers\ExcelsatisfaccionController;
 use Illuminate\Support\Facades\Response;
+use App\Http\Controllers\WordController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -67,6 +68,11 @@ Route::get('/descargar-formato-mttos', function () {
     return Response::download($path);
 })->name('descargar.formato.mttos');
 /**Formato para Mttos. */
+
+
+Route::get('/generar-responsiva/{id}', [WordController::class, 'generarResponsiva'])->name('word.responsiva');
+
+
 
 
 
