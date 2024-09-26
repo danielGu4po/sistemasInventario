@@ -124,7 +124,6 @@
                                 <label>
                                     <input type="radio" name="mantenimientoMtto" value="Preventivo"> Preventivo
                                 </label>
-
                             </div>
                         </div>
                     </div>

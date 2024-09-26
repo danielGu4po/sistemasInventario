@@ -93,30 +93,24 @@ class MantenimientoController extends Controller
     {
 
         $item = inventario::with('asignaciones')->findOrFail($id);
-
         $correctivos = mantenimiento::where('item_id', $id)->where('mantenimientoMtto', 'Correctivo')->count();
         $preventivos = mantenimiento::where('item_id', $id)->where('mantenimientoMtto', 'Preventivo')->count();
-
         $sinMtto = mantenimiento::where('item_id',$id)->doesntExist();
-
         $promedioMttos = mantenimiento::where('item_id',$id)->avg('id');
-
         $proximosMttos = mantenimiento::where('item_id',$id)
         ->where('mantenimientoFecha', '>=', now())
         ->orderBy('mantenimientoFecha','asc')
         ->get();
-
         $totalMttos = mantenimiento::where('item_id',$id)->count();
         $completos = mantenimiento::where('item_id',$id)
         ->whereNotNull('mantenimientoDetalles')
         ->count();
-
         $porcentajeCompletos = $totalMttos > 0 ? ($completos / $totalMttos) * 100 : 0;
 
         return view('mantenimientos.estadisticasItems', compact('item','preventivos', 'correctivos', 'sinMtto','promedioMttos','porcentajeCompletos','proximosMttos'));
     }
 
-    /**
+    /** 
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
