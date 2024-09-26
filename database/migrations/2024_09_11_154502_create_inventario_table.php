@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('inventarioMarca');
             $table->text('inventarioModelo');
             $table->string('inventarioSerie');
-            $table->string('inventarioRAM');
+            $table->string('inventarioRAM')->nullable();
             $table->string('inventarioAlmacenamiento');
             $table->text('inventarioContraseña')->nullable();
             $table->string('inventarioEstado');

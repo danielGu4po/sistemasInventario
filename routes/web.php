@@ -74,10 +74,16 @@ Route::get('/generar-responsiva/{id}', [WordController::class, 'generarResponsiv
 
 
 
+Route::get('/verificacion-form', function () {
+    return view('verificacionForm'); // Nombre de la vista que contiene tu formulario
+});
 
 
 
-Route::get('/satisfaccion/formato/{id}', [SatisfaccionController::class, 'showFormato'])->name('satisfaccion.formato');
+Route::get('/formulario-validacion', function () {
+    return view('verificacion.formularioVerificacion');
+});
+
 
 Auth::routes();
 
