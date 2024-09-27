@@ -94,7 +94,9 @@ Route::get('/mantenimiento/{id}', [MantenimientoController::class, 'show'])->nam
 Route::get('/generar-responsiva/{id}', [WordController::class, 'generarResponsiva'])->name('word.responsiva');
 
 
-Route::get('/formulario-validacion', function () { return view('verificacion.formularioVerificacion');});
+Route::get('/formulario-validacion', function () { 
+    return view('verificacion.formularioVerificacion'); 
+})->name('verificacion.formularioVerificacion');
 
 Route::post('/verificacion/store', [VerificacionController::class, 'store'])->name('verificacion.store');
 
