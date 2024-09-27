@@ -17,6 +17,8 @@ return new class extends Migration
             $table->date('mantenimientoFecha');
             $table->text('mantenimientoDetalles')->nullable();
             $table->string('mantenimientoMtto')->nullable();
+            $table->boolean('completado')->default(false);
+            $table->string('archivo_path')->nullable();
             $table->timestamps();
 
             $table->foreign('item_id')->references('id')->on('inventario')->onDelete('cascade');

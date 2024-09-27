@@ -84,6 +84,17 @@ Route::get('/formulario-validacion', function () {
     return view('verificacion.formularioVerificacion');
 });
 
+/**Subir formatos de MTTOS */
+Route::post('/mantenimiento/{id}/upload', [MantenimientoController::class, 'uploadFile'])->name('mantenimiento.uploadFile');
+/**Subir formatos de MTTOS */
+
+// Ruta para programar mantenimiento (sin guardar en la base de datos)
+Route::post('/mantenimiento/{id}/programar', [MantenimientoController::class, 'programarMantenimiento'])->name('mantenimiento.programar');
+// Ruta para programar mantenimiento (sin guardar en la base de datos)
+
+// Ruta para mostrar el mantenimiento
+Route::get('/mantenimiento/{id}', [MantenimientoController::class, 'show'])->name('mantenimiento.show');
+// Ruta para mostrar el mantenimiento
 
 Auth::routes();
 
