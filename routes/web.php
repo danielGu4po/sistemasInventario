@@ -50,17 +50,14 @@ Route::get('/export',[ExcelController::class,'export'])->name('export.excel');
 
 /**satisfaccion */
 Route::get('/satisfaccion', [SatisfaccionController::class, 'showForm'])->name('satisfaccion.form');
-
 Route::get('/index-satisfaccion', [SatisfaccionController::class, 'index'])->name('satisfaccion.index');
 Route::get('/satisfaccion/{id}', [SatisfaccionController::class, 'show'])->name('satisfaccion.show');
-
-
-// Procesar el formulario y guardar los datos en la base de datos (POST)
 Route::post('/satisfaccion', [SatisfaccionController::class, 'store'])->name('satisfaccion.store');
+Route::get('/satisfaccion/formato/{id}', [SatisfaccionController::class, 'showFormato'])->name('satisfaccion.formato');
+/**satisfaccion */
 
 /**Excel Satisfaccion */
 Route::get('/exportar-excel/{id}', [ExcelsatisfaccionController::class, 'export2'])->name('excel.export2');
-
 /**Excel Satisfaccion */
 
 /**Formato para Mttos. */
@@ -91,6 +88,15 @@ Route::post('/mantenimiento/{id}/programar', [MantenimientoController::class, 'p
 Route::get('/mantenimiento/{id}', [MantenimientoController::class, 'show'])->name('mantenimiento.show');
 // Ruta para mostrar el mantenimiento
 
+
+
+
+Route::get('/generar-responsiva/{id}', [WordController::class, 'generarResponsiva'])->name('word.responsiva');
+
+
+Route::get('/formulario-validacion', function () { return view('verificacion.formularioVerificacion');});
+
+Route::post('/verificacion/store', [VerificacionController::class, 'store'])->name('verificacion.store');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

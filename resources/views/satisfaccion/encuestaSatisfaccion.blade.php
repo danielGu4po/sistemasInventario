@@ -4,7 +4,7 @@
 <div class="container mt-3">
     <h2 class="text-center mb-4">Formulario de Evaluación de Servicio</h2>
 
-    <form action="{{ route('satisfaccion.store') }}" method="POST">
+    <form action="{{ route('satisfaccion.formato', ['id' => $evaluacion->id]) }}" method="POST">
         @csrf
 
         <style>
