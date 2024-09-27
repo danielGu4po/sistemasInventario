@@ -147,6 +147,7 @@
                         <th>Fecha</th>
                         <th>Tipo de Mantenimiento</th>
                         <th>Archivo</th>
+                        <th>Encuesta</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -155,6 +156,8 @@
                         <td>{{ $archivo->mantenimientoFecha }}</td>
                         <td>{{ $archivo->mantenimientoMtto }}</td>
                         <td><a href="{{ Storage::url($archivo->archivo_path) }}" target="_blank" class="btn btn-link">Ver archivo</a></td>
+                        <td> <a href="{{ route('encuesta.satisfaccion') }}" class="btn btn-info">Realizar Encuesta</a></td>
+
                     </tr>
                     @endforeach
                 </tbody>

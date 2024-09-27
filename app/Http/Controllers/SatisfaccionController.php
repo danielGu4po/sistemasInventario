@@ -54,7 +54,7 @@ class SatisfaccionController extends Controller
         Satisfaccion::create($validatedData);
 
         // Redirigir de nuevo con un mensaje de éxito
-        return redirect()->route('satisfaccion.index')->with('success', 'Evaluación guardada correctamente');
+        return redirect()->route('verificacion.formularioVerificacion')->with('success', 'Evaluación guardada correctamente');
     }
 
     // Método para listar todas las evaluaciones

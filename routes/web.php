@@ -49,10 +49,10 @@ Route::get('/export',[ExcelController::class,'export'])->name('export.excel');
 /**MATRIZ de Asignación */
 
 /**satisfaccion */
-Route::get('/satisfaccion', [SatisfaccionController::class, 'showForm'])->name('satisfaccion.form');
-Route::get('/index-satisfaccion', [SatisfaccionController::class, 'index'])->name('satisfaccion.index');
+Route::get('/satisfaccion/formulario', [SatisfaccionController::class, 'showForm'])->name('satisfaccion.formulario');
+Route::post('/satisfaccion/store', [SatisfaccionController::class, 'store'])->name('satisfaccion.store');
+Route::get('/satisfaccion', [SatisfaccionController::class, 'index'])->name('satisfaccion.index');
 Route::get('/satisfaccion/{id}', [SatisfaccionController::class, 'show'])->name('satisfaccion.show');
-Route::post('/satisfaccion', [SatisfaccionController::class, 'store'])->name('satisfaccion.store');
 Route::get('/satisfaccion/formato/{id}', [SatisfaccionController::class, 'showFormato'])->name('satisfaccion.formato');
 /**satisfaccion */
 
@@ -97,6 +97,14 @@ Route::get('/generar-responsiva/{id}', [WordController::class, 'generarResponsiv
 Route::get('/formulario-validacion', function () { return view('verificacion.formularioVerificacion');});
 
 Route::post('/verificacion/store', [VerificacionController::class, 'store'])->name('verificacion.store');
+
+
+Route::get('/encuesta-satisfaccion', function () {
+    return view('satisfaccion.encuestaSatisfaccion');
+})->name('encuesta.satisfaccion');
+
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
