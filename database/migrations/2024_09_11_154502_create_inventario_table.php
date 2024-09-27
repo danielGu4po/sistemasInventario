@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('inventarioModelo');
             $table->string('inventarioSerie');
             $table->string('inventarioRAM')->nullable();
-            $table->string('inventarioAlmacenamiento');
+            $table->string('inventarioAlmacenamiento')->nullable(); // Hacer que el campo sea opcional
             $table->text('inventarioContraseña')->nullable();
             $table->string('inventarioEstado');
             $table->string('inventarioNumTel')->nullable();
@@ -28,6 +28,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.

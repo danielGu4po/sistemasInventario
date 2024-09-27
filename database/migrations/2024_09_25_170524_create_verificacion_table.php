@@ -71,7 +71,7 @@ return new class extends Migration
             $table->boolean('verificacionConcepto46')->default(false);
             $table->boolean('verificacionConcepto47')->default(false);
             $table->boolean('verificacionConcepto48')->default(false);
-            $table->text('verificacionConcepto')->nullable();
+            $table->text('verificacionConceptoObservacion')->nullable();
             $table->text('verificacionAccion')->nullable();
             $table->text('verificacionResponsable')->nullable();
             $table->date('verificacionFechaCumplimiento')->nullable();

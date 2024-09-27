@@ -9,6 +9,7 @@ use App\Http\Controllers\SatisfaccionController;
 use App\Http\Controllers\ExcelsatisfaccionController;
 use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\WordController;
+use App\Http\Controllers\VerificacionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -73,16 +74,10 @@ Route::get('/descargar-formato-mttos', function () {
 Route::get('/generar-responsiva/{id}', [WordController::class, 'generarResponsiva'])->name('word.responsiva');
 
 
+Route::get('/formulario-validacion', function () { return view('verificacion.formularioVerificacion');});
 
-Route::get('/verificacion-form', function () {
-    return view('verificacionForm'); // Nombre de la vista que contiene tu formulario
-});
+Route::post('/verificacion/store', [VerificacionController::class, 'store'])->name('verificacion.store');
 
-
-
-Route::get('/formulario-validacion', function () {
-    return view('verificacion.formularioVerificacion');
-});
 
 /**Subir formatos de MTTOS */
 Route::post('/mantenimiento/{id}/upload', [MantenimientoController::class, 'uploadFile'])->name('mantenimiento.uploadFile');
@@ -99,5 +94,6 @@ Route::get('/mantenimiento/{id}', [MantenimientoController::class, 'show'])->nam
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 
