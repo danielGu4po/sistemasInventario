@@ -129,17 +129,17 @@
 /*Icons in the ProgressBar*/
 #progressbar #mantenimiento:before {
     font-family: FontAwesome;
-    content: "\f058";
+    content: "\f00c";
 }
 
 #progressbar #solicitante:before {
     font-family: FontAwesome;
-    content: "\f807";
+    content: "\f073";
 }
 
 #progressbar #vehiculo:before {
     font-family: FontAwesome;
-    content: "\f133";
+    content: "\f1c3";
 }
 
 #progressbar #checklist:before {

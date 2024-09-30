@@ -1,171 +1,266 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="container mt-4">
-    <h1 class="mb-4">Detalles del Mantenimiento</h1>
 
-    <!-- Información del equipo -->
-    <div class="card mb-4">
-        <div class="card-header bg-dark text-white">
-            <h2>Información del Equipo</h2>
-        </div>
-        <div class="card-body">
-            <table class="table table-striped">
-                <tr>
-                    <th>Marca:</th>
-                    <td>{{ $item->inventarioMarca }}</td>
-                </tr>
-                <tr>
-                    <th>Modelo:</th>
-                    <td>{{ $item->inventarioModelo }}</td>
-                </tr>
-                <tr>
-                    <th>Memoria RAM:</th>
-                    <td>{{ $item->inventarioRAM }}</td>
-                </tr>
-                <tr>
-                    <th>Almacenamiento:</th>
-                    <td>{{ $item->inventarioAlmacenamiento }}</td>
-                </tr>
-                <tr>
-                    <th>Estado:</th>
-                    <td>{{ $item->inventarioEstado }}</td>
-                </tr>
-                <tr>
-                    <th>Observaciones:</th>
-                    <td>{{ $item->inventarioObservaciones }}</td>
-                </tr>
-            </table>
-        </div>
-    </div>
 
-    <!-- Estadísticas del Mantenimiento -->
-    <div class="card mb-4">
-        <div class="card-header bg-dark text-white">
-            <h2>Estadísticas del Mantenimiento</h2>
-        </div>
-        <div class="card-body">
-            <ul class="list-group">
-                <li class="list-group-item"><strong>Total de Mantenimientos:</strong> {{ $totalMttos }}</li>
-                <li class="list-group-item"><strong>Mantenimientos Correctivos:</strong> {{ $correctivos }}</li>
-                <li class="list-group-item"><strong>Mantenimientos Preventivos:</strong> {{ $preventivos }}</li>
-                <li class="list-group-item"><strong>Promedio de Mantenimientos:</strong> {{ number_format($promedioMttos, 2) }}</li>
-                <li class="list-group-item"><strong>Porcentaje de Mantenimientos Completados:</strong> {{ number_format($porcentajeCompletos, 2) }}%</li>
-                <li class="list-group-item">{{ $sinMtto ? 'Este equipo no ha recibido mantenimiento.' : 'Este equipo ya ha recibido mantenimiento.' }}</li>
-            </ul>
-        </div>
-    </div>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Merriweather:700);
 
-    <!-- Programar mantenimiento -->
-    <div class="card mb-4">
-        <div class="card-header bg-dark text-white">
-            <h2>Programar Mantenimiento</h2>
-        </div>
-        <div class="card-body">
-            <form action="{{ route('mantenimiento.programar', $item->id) }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="mantenimientoFecha">Fecha del Mantenimiento:</label>
-                    <input type="date" class="form-control" id="mantenimientoFecha" name="mantenimientoFecha" required>
+    h6 {
+        border-collapse: separate;
+        border-spacing: 16px 0;
+        color: #123;
+        display: table;
+        font-family: arial;
+        font-weight: 700;
+        font-size: 5em;
+        line-height: .25;
+        margin: 1em -15px 0.5em;
+        table-layout: auto;
+        text-align: center;
+        text-shadow: .0625em .0625em 0 rgba(0, 0, 0, .2);
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    h6 {
+        font-size: 1.25em;
+    }
+
+    h6:before {
+        border-top: 3px double #123;
+        content: '';
+        display: table-cell;
+        width: 5%;
+    }
+
+    h6:after {
+        border-top: 3px double #123;
+        content: '';
+        display: table-cell;
+        width: 95%;
+    }
+
+    h6:before {
+        border-top-color: Crimson;
+        border-top-style: ridge;
+    }
+
+    h6:after {
+        border-top-color: Crimson;
+        border-top-style: ridge;
+    }
+
+    textarea {
+        width: 100%;
+        height: 150px;
+    }
+
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .form-column {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    .form-column:last-child {
+        margin-right: 0;
+    }
+
+    .form-column textarea {
+        width: 100%;
+        height: 150px;
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+
+<div class="container containerLarge justify-content-center">
+    <div class="row justify-content-center">
+        <div class="col-md-12 text-center">
+            <div class="card px-0 ">
+                <div id="msform">
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active" id="solicitante"><strong>Programar</strong></li>
+                        <li id="vehiculo"><strong>Archivo Mtto</strong></li>
+                        <li id="mantenimiento"><strong>Confirmar</strong></li>
+                    </ul>
+                    <br>
+                    <!-- fieldsets -->
+                    <fieldset>
+                        <h6>Programar Mantenimiento</h6>
+                        <form action="{{ route('mantenimiento.programar', $item->id) }}" method="POST" class="form">
+                            @csrf
+                            <div class="form-row">
+                                <div class="form-column">
+                                    <label for="mantenimientoFecha">Fecha del Mantenimiento:</label>
+                                    <input type="date" class="form-control" id="mantenimientoFecha" name="mantenimientoFecha" required>
+                                </div>
+                                <div class="form-column">
+                                    <label for="mantenimientoMtto">Tipo de Mantenimiento:</label>
+                                    <select class="form-control" id="mantenimientoMtto" name="mantenimientoMtto" required>
+                                        <option value="Correctivo">Correctivo</option>
+                                        <option value="Preventivo">Preventivo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-column">
+                                <label for="mantenimientoDetalles">Detalles del Mantenimiento:</label>
+                                <textarea id="mantenimientoDetalles" name="mantenimientoDetalles"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success">Programar Mantenimiento</button>
+                        </form>
+                        <input type="button" name="next" class="next action-button" value="Siguiente" />
+                    </fieldset>
+                    <fieldset>
+                        <h6>Subir Archivo de Mantenimiento y Guardar</h6>
+                        <form action="{{ route('mantenimiento.uploadFile', $item->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-row">
+                                <div class="form-column">
+                                    <label for="archivo">Subir archivo de Excel</label>
+                                    <input type="file" class="form-control" id="archivo" name="archivo" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success mt-3">Subir Archivo y Guardar Mantenimiento</button>
+                        </form>
+                        <input type="button" name="next" class="next action-button" value="Siguiente" />
+                        <input type="button" name="previous" class="previous action-button-previous" value="Atras" />
+                    </fieldset>
+                    <fieldset>
+                        <h6>Confirmar Mantenimiento</h6>
+                        <p>Revisa los detalles antes de guardar el mantenimiento.</p>
+                        <div class="card-body">
+                            @if($archivos->isNotEmpty())
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Tipo de Mantenimiento</th>
+                                        <th>Archivo</th>
+                                        <th>Encuesta</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($archivos as $archivo)
+                                    <tr>
+                                        <td>{{ $archivo->mantenimientoFecha }}</td>
+                                        <td>{{ $archivo->mantenimientoMtto }}</td>
+                                        <td><a href="{{ Storage::url($archivo->archivo_path) }}" target="_blank" class="btn btn-link">Ver archivo</a></td>
+                                        <td> <a href="{{ route('encuesta.satisfaccion') }}" class="btn btn-info">Realizar Encuesta</a></td>
+
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            @else
+                            <p class="text-muted">No hay archivos subidos.</p>
+                            @endif
+                        </div>
+                        <a href="{{url('/mantenimientoComputo')}}" class="action-button" value="Guardar">Guardar</a>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Atras" />
+                    </fieldset>
                 </div>
-
-                <div class="form-group">
-                    <label for="mantenimientoMtto">Tipo de Mantenimiento:</label>
-                    <select class="form-control" id="mantenimientoMtto" name="mantenimientoMtto" required>
-                        <option value="Correctivo">Correctivo</option>
-                        <option value="Preventivo">Preventivo</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="mantenimientoDetalles">Detalles del Mantenimiento:</label>
-                    <textarea class="form-control" id="mantenimientoDetalles" name="mantenimientoDetalles" rows="3"></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Programar Mantenimiento</button>
-            </form>
+            </div>
         </div>
     </div>
 
-    <!-- Próximos mantenimientos programados -->
-    <!-- Próximos mantenimientos programados -->
-    <div class="card mb-4">
-        <div class="card-header bg-dark text-white">
-            <h2>Próximos Mantenimientos Programados</h2>
-        </div>
-        <div class="card-body">
-            @if($proximosMttos->isNotEmpty())
-            <ul class="list-group list-group-flush">
-                @foreach($proximosMttos as $mnt)
-                @if($mnt)
-                <li class="list-group-item">
-                    {{ \Carbon\Carbon::parse($mnt['mantenimientoFecha'])->format('d/m/Y') }} - {{ $mnt['mantenimientoMtto'] }}
-                    @if(isset($mnt['completado']) && $mnt['completado'])
-                    - <a href="{{ Storage::url($mnt['archivo_path']) }}" target="_blank">Ver archivo</a>
-                    @else
-                    - <span class="text-warning">Pendiente</span>
-                    @endif
-                </li>
-                @endif
-                @endforeach
-            </ul>
-            @else
-            <p class="text-muted">No hay mantenimientos programados.</p>
-            @endif
-        </div>
-    </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <script>
+        $(document).ready(function() {
 
-    <!-- Subir archivo de mantenimiento -->
-    <div class="card mb-4">
-        <div class="card-header bg-dark text-white">
-            <h2>Subir Archivo de Mantenimiento y Guardar</h2>
-        </div>
-        <div class="card-body">
-            <form action="{{ route('mantenimiento.uploadFile', $item->id) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                    <label for="archivo">Subir archivo de Excel</label>
-                    <input type="file" class="form-control" id="archivo" name="archivo" required>
-                </div>
+            var current_fs, next_fs, previous_fs; //fieldsets
+            var opacity;
+            var current = 1;
+            var steps = $("fieldset").length;
 
-                <button type="submit" class="btn btn-success mt-3">Subir Archivo y Guardar Mantenimiento</button>
-            </form>
-        </div>
-    </div>
+            setProgressBar(current);
 
-    <!-- Archivos de mantenimientos completados -->
-    <div class="card mb-4">
-        <div class="card-header bg-dark text-white">
-            <h2>Archivos de Mantenimientos Completados</h2>
-        </div>
-        <div class="card-body">
-            @if($archivos->isNotEmpty())
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Tipo de Mantenimiento</th>
-                        <th>Archivo</th>
-                        <th>Encuesta</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($archivos as $archivo)
-                    <tr>
-                        <td>{{ $archivo->mantenimientoFecha }}</td>
-                        <td>{{ $archivo->mantenimientoMtto }}</td>
-                        <td><a href="{{ Storage::url($archivo->archivo_path) }}" target="_blank" class="btn btn-link">Ver archivo</a></td>
-                        <td> <a href="{{ route('encuesta.satisfaccion') }}" class="btn btn-info">Realizar Encuesta</a></td>
+            $(".next").click(function() {
 
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            @else
-            <p class="text-muted">No hay archivos subidos.</p>
-            @endif
-        </div>
-    </div>
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+                //Add Class Active
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+                //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function(now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 500
+                });
+                setProgressBar(++current);
+            });
+
+            $(".previous").click(function() {
+
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
+
+                //Remove class active
+                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+                //show the previous fieldset
+                previous_fs.show();
+
+                //hide the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function(now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        previous_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 500
+                });
+                setProgressBar(--current);
+            });
+
+            function setProgressBar(curStep) {
+                var percent = parseFloat(100 / steps) * curStep;
+                percent = percent.toFixed();
+                $(".progress-bar")
+                    .css("width", percent + "%")
+            }
+
+            $(".submit").click(function() {
+                return false;
+            })
+
+        });
+    </script>
+
 </div>
+
+
 @endsection

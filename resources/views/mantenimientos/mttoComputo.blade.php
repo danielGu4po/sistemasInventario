@@ -1,7 +1,11 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="container mt-3">
-    <h1 class="mb-4">Mantenimientos Computó</h1>
+    <h1 class="mb-4">Mantenimientos Computó</h1> 
+    <div class="text-center mt-4">
+        <a href="{{ route('descargar.formato.mttos') }}" class="btn btn-primary">Formato de Mttos.</a>
+    </div>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -44,9 +48,7 @@
             @endforeach
         </tbody>
     </table>
-    <div class="text-center mt-4">
-        <a href="{{ route('descargar.formato.mttos') }}" class="btn btn-primary">Formato de Mttos.</a>
-    </div>
+    
 
 </div>
 @endsection
