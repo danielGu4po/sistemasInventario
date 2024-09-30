@@ -12,7 +12,6 @@ use Carbon\Carbon;
 
 class VerificacionController extends Controller
 {
-    
     public function store(Request $request)
     {
         // Validación de los datos del formulario
@@ -125,7 +124,7 @@ $verificacion = Verificacion::latest()->first(); // O usa `latest('created_at')`
             $sheet->setCellValue('I14', '1');
         } else {
             // Si es 0 o cualquier otro valor, poner 1 en J14
-            $sheet->setCellValue('J14', '');
+            $sheet->setCellValue('J14', '1');
         }
     
         if ($verificacion->verificacionConcepto2 == 1) {
@@ -546,7 +545,6 @@ $verificacion = Verificacion::latest()->first(); // O usa `latest('created_at')`
             $sheet->setCellValue('O41', '');
             $sheet->setCellValue('P41', '1');
         }
-    
         if ($verificacion->verificacionConcepto44 == 1) {
             // Si es igual a 1, poner el valor en I14
             $sheet->setCellValue('O42', '1');
@@ -556,7 +554,6 @@ $verificacion = Verificacion::latest()->first(); // O usa `latest('created_at')`
             $sheet->setCellValue('O42', '');
             $sheet->setCellValue('P42', '1');
         }
-    
         if ($verificacion->verificacionConcepto45 == 1) {
             // Si es igual a 1, poner el valor en I14
             $sheet->setCellValue('O45', '1');
@@ -566,7 +563,6 @@ $verificacion = Verificacion::latest()->first(); // O usa `latest('created_at')`
             $sheet->setCellValue('O45', '');
             $sheet->setCellValue('P45', '1');
         }
-    
         if ($verificacion->verificacionConcepto46 == 1) {
             // Si es igual a 1, poner el valor en I14
             $sheet->setCellValue('O46', '1');
@@ -576,7 +572,6 @@ $verificacion = Verificacion::latest()->first(); // O usa `latest('created_at')`
             $sheet->setCellValue('O46', '');
             $sheet->setCellValue('P46', '1');
         }
-    
         if ($verificacion->verificacionConcepto47 == 1) {
             // Si es igual a 1, poner el valor en I14
             $sheet->setCellValue('O47', '1');
@@ -586,7 +581,6 @@ $verificacion = Verificacion::latest()->first(); // O usa `latest('created_at')`
             $sheet->setCellValue('O47', '');
             $sheet->setCellValue('P47', '1');
         }
-    
         if ($verificacion->verificacionConcepto48 == 1) {
             // Si es igual a 1, poner el valor en I14
             $sheet->setCellValue('O48', '1');
@@ -596,22 +590,18 @@ $verificacion = Verificacion::latest()->first(); // O usa `latest('created_at')`
             $sheet->setCellValue('O48', '');
             $sheet->setCellValue('P48', '1');
         }
-        
         $sheet->setCellValue('E52', $verificacion->verificacionConceptoObservacion); 
         $sheet->setCellValue('G52', $verificacion->verificacionAccion); 
         $sheet->setCellValue('K52', $verificacion->verificacionResponsable); 
         $sheet->setCellValue('O52', $verificacion->verificacionFechaCumplimiento); 
-
-
-
          // Crear el archivo Excel en memoria
     $writer = new Xlsx($spreadsheet);
     $fileName = 'verificacion.xlsx';
-
     // Enviar el archivo directamente como respuesta al navegador
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     header('Content-Disposition: attachment; filename="'. urlencode($fileName) .'"');
     $writer->save('php://output');
+    
     exit;
     
     }

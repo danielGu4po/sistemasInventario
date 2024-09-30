@@ -71,6 +71,16 @@
                             @else
                             <li style="font-size: 12px;" class="dropdown">
                                 <a href="#" class="sub-menu-toggle">
+                                    {{ __('Evaluaciones ') }} <span class="caret"><i class="fa-solid fa-list"></i></span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="{{url('/satisfaccion')}}" style="cursor: pointer">{{ __('Evaluaciones de servicio  ') }}<i class="fa-solid fa-list"></i></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="font-size: 12px;" class="dropdown">
+                                <a href="#" class="sub-menu-toggle">
                                     {{ __('Mantenimiento ') }} <span class="caret"><i class="fa-solid fa-screwdriver-wrench"></i></span>
                                 </a>
                                 <ul class="sub-menu">

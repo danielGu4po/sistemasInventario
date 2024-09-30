@@ -36,6 +36,7 @@
         .table-bordered td {
             border: 1px solid #dee2e6;
         }
+        
     </style>
 
     <div class="row">
@@ -43,20 +44,20 @@
             <h2>Datos del solicitante</h2>
             <table class="table">
                 <tr>
-                    <th>Nombre del Usuario:</th>
-                    <td>{{$asignacion->asignarUsuario}}</td>
+                    <th style="text-align: left;">Nombre del Usuario:</th>
+                    <td style="text-align: left;">{{$asignacion->asignarUsuario}}</td>
                 </tr>
                 <tr>
-                    <th>No. De Empleado:</th>
-                    <td>{{$asignacion->asignarNoEmpleado}}</td>
+                    <th style="text-align: left;">No. De Empleado:</th>
+                    <td style="text-align: left;">{{$asignacion->asignarNoEmpleado}}</td>
                 </tr>
                 <tr>
-                    <th>Puesto:</th>
-                    <td>{{$asignacion->asignarPuesto}}</td>
+                    <th style="text-align: left;">Puesto:</th>
+                    <td style="text-align: left;">{{$asignacion->asignarPuesto}}</td>
                 </tr>
                 <tr>
-                    <th>Departamento:</th>
-                    <td>{{$asignacion->asignarDepartamento}}</td>
+                    <th style="text-align: left;">Departamento:</th>
+                    <td style="text-align: left;">{{$asignacion->asignarDepartamento}}</td>
                 </tr>
             </table>
         </div>
@@ -64,20 +65,20 @@
             <h2>Datos del ítem solicitado</h2>
             <table class="table">
                 <tr>
-                    <th>Nombre del Equipo:</th>
-                    <td>{{$asignacion->asignarEquipoNombre}}</td>
+                    <th style="text-align: left;">Nombre del Equipo:</th>
+                    <td style="text-align: left;">{{$asignacion->asignarEquipoNombre}}</td>
                 </tr>
                 <tr>
-                    <th>Nombre de Usuario:</th>
-                    <td>{{$asignacion->asignarUsuarioNombre}}</td>
+                    <th style="text-align: left;">Nombre de Usuario:</th>
+                    <td style="text-align: left;">{{$asignacion->asignarUsuarioNombre}}</td>
                 </tr>
                 <tr>
-                    <th>Contraseña:</th>
-                    <td>{{$asignacion->inventario->inventarioContraseña}}</td>
+                    <th style="text-align: left;">Contraseña:</th>
+                    <td style="text-align: left;">{{$asignacion->inventario->inventarioContraseña}}</td>
                 </tr>
                 <tr>
-                    <th>Correo Electrónico:</th>
-                    <td>{{$asignacion->asignarEquipoCorreo}}</td>
+                    <th style="text-align: left;">Correo Electrónico:</th>
+                    <td style="text-align: left;">{{$asignacion->asignarEquipoCorreo}}</td>
                 </tr>
             </table>
         </div>
