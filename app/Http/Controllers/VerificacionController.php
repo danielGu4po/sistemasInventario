@@ -12,6 +12,7 @@ use Carbon\Carbon;
 
 class VerificacionController extends Controller
 {
+    
     public function store(Request $request)
     {
         // Validación de los datos del formulario
@@ -612,5 +613,6 @@ $verificacion = Verificacion::latest()->first(); // O usa `latest('created_at')`
     header('Content-Disposition: attachment; filename="'. urlencode($fileName) .'"');
     $writer->save('php://output');
     exit;
+    
     }
 }

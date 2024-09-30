@@ -17,4 +17,5 @@ class Asignacion extends Model
     {
         return $this->belongsTo(Inventario::class, 'id_inventario');
     }
+    
 }

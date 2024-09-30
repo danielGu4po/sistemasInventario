@@ -94,16 +94,12 @@ Route::get('/mantenimiento/{id}', [MantenimientoController::class, 'show'])->nam
 Route::get('/generar-responsiva/{id}', [WordController::class, 'generarResponsiva'])->name('word.responsiva');
 
 
-Route::get('/formulario-validacion', function () { 
-    return view('verificacion.formularioVerificacion'); 
-})->name('verificacion.formularioVerificacion');
+Route::get('/formulario-validacion', function () { return view('verificacion.formularioVerificacion'); })->name('verificacion.formularioVerificacion');
 
 Route::post('/verificacion/store', [VerificacionController::class, 'store'])->name('verificacion.store');
 
 
-Route::get('/encuesta-satisfaccion', function () {
-    return view('satisfaccion.encuestaSatisfaccion');
-})->name('encuesta.satisfaccion');
+Route::get('/encuesta-satisfaccion', function () {return view('satisfaccion.encuestaSatisfaccion');})->name('encuesta.satisfaccion');
 
 
 

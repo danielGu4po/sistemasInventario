@@ -36,6 +36,7 @@ class Satisfaccion extends Model
 public function asignar()
 {
     return $this->hasOne(Asignar::class, 'asignarNoEmpleado', 'numUsuario');
+    
 }
 
 }

@@ -1,15 +1,14 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container mt-3">
     <h2 class="text-center mb-4">Formulario de Evaluación de Servicio</h2>
-
     <form action="{{ route('satisfaccion.store') }}" method="POST">
         @csrf
-
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
-
+            h6, label {
+        text-align: left; /* Alinea el texto a la izquierda */
+            }
             h6 {
                 border-collapse: separate;
                 border-spacing: 16px 0;
@@ -26,50 +25,41 @@
                 white-space: nowrap;
                 width: 100%;
             }
-
             h6 {
                 font-size: 1.25em;
             }
-
             h6:before {
                 border-top: 3px double #123;
                 content: '';
                 display: table-cell;
                 width: 5%;
             }
-
             h6:after {
                 border-top: 3px double #123;
                 content: '';
                 display: table-cell;
                 width: 95%;
             }
-
             h6:before {
                 border-top-color: Crimson;
                 border-top-style: ridge;
             }
-
             h6:after {
                 border-top-color: Crimson;
                 border-top-style: ridge;
             }
-
             label {
                 font-weight: bold;
                 color: #34495e;
             }
-
             .form-group {
                 margin-bottom: 20px;
             }
-
             .text-center {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
             }
-
             .form-check {
                 display: flex;
                 align-items: center;
@@ -104,20 +94,35 @@
             }
 
             .form-check-container {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px; /* Añade más espacio entre las filas */
+    }
 
-            .form-check-container label {
-                flex: 1;
-                margin-right: 10px; /* Espacio entre el texto y el checkbox */
-            }
+    .form-check-container label {
+        flex: 1;
+        margin-right: 15px; /* Espacio entre el texto y el checkbox */
+        color: #424949; /* Cambia el color del texto a negro */
+    }
 
-            .form-check-container .form-check {
-                margin-left: auto; /* Empuja el checkbox hacia la derecha */
-            }
+    .form-check-input {
+        margin-left: 15px; /* Aumenta el espacio entre el checkbox y el texto */
+        border: 2px solid grey; /* Agrega un borde negro al checkbox */
+        width: 20px;
+        height: 20px; /* Aumenta el tamaño del checkbox */
+    }
 
+    .form-check-input:checked {
+        background-color: green; /* Cambia el color de fondo del checkbox cuando esté marcado */
+        border-color: #424949; /* Asegura que el borde se mantenga negro cuando esté marcado */
+    }
+
+
+          /* Alinear los textos en los inputs también a la izquierda */
+    input[type="text"], input[type="date"], input[type="number"], textarea {
+        text-align: left; /* Alinea el texto de los inputs a la izquierda */
+    }
         </style>
 
         <!-- Información del Usuario -->    

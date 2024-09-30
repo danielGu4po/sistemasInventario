@@ -1,17 +1,13 @@
 @extends('layouts.app')
-
 @section('content')
-
 <body>
     <div class="container mt-3">
         <h2 class="text-center mb-4">Lista de verificación de funcionalidad a equipos de cómputo.</h2>
-
         <!-- Inicio del formulario -->
         <form id="verificacionForm" action="{{ route('verificacion.store') }}" method="POST">
             @csrf
             <style>
                 @import url(https://fonts.googleapis.com/css?family=Merriweather:700);
-
                 h6 {
                     border-collapse: separate;
                     border-spacing: 16px 0;
@@ -28,40 +24,33 @@
                     white-space: nowrap;
                     width: 100%;
                 }
-
                 h6 {
                     font-size: 1.25em;
                 }
-
                 h6:before {
                     border-top: 3px double #123;
                     content: '';
                     display: table-cell;
                     width: 5%;
                 }
-
                 h6:after {
                     border-top: 3px double #123;
                     content: '';
                     display: table-cell;
                     width: 95%;
                 }
-
                 h6:before {
                     border-top-color: Crimson;
                     border-top-style: ridge;
                 }
-
                 h6:after {
                     border-top-color: Crimson;
                     border-top-style: ridge;
                 }
-
                 textarea {
                     width: 100%;
                     height: 150px;
                 }
-            
                 .form-check {
                     display: flex;
                     justify-content: space-between;
@@ -70,7 +59,34 @@
                 .form-check-label {
                     margin-right: 10px;
                 }
-
+                .form-check-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px; /* Añade más espacio entre las filas */
+    }
+    .form-check-container label {
+        flex: 1;
+        margin-right: 15px; /* Espacio entre el texto y el checkbox */
+        color: black; /* Cambia el color del texto a negro */
+    }
+    .form-check-input {
+        margin-left: 15px; /* Aumenta el espacio entre el checkbox y el texto */
+        border: 2px solid grey; /* Agrega un borde negro al checkbox */
+        width: 20px;
+        height: 20px; /* Aumenta el tamaño del checkbox */
+    }
+    .form-check-input:checked {
+        background-color: green; /* Cambia el color de fondo del checkbox cuando esté marcado */
+        border-color: #424949; /* Asegura que el borde se mantenga negro cuando esté marcado */
+    }
+    .form-check:hover {
+    background-color: rgba(133, 193, 233); /* Un ligero fondo azul */
+}
+.form-check-label {
+    cursor: pointer;
+   /* padding-right: 30px; /* Para asegurarse de que el texto no toque el checkbox */
+}
             </style>
             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
             <h6>Datos Generales</h6>
@@ -136,9 +152,7 @@
         <input type="date" class="form-control" id="verificacionFecha" name="verificacionFecha" required>
     </div>
 </div>
-
             </div>
-
 <!-- Nuevas listas de checkboxes -->
 <div class="row mt-4">
     <div class="col-6">
@@ -149,7 +163,6 @@
                 <input type="hidden" name="verificacionConcepto1" value="0">
                 <label class="form-check-label" for="verificacionConcepto1">1. Respaldo de información.</label>
                 <input class="form-check-input" type="checkbox" value="1" id="verificacionConcepto1" name="verificacionConcepto1">
-                
             </div>
             <div class="form-check">
                 <label class="form-check-label" for="verificacionConcepto2">2. Clave de acceso para iniciar sesión en el equipo.</label>
@@ -169,7 +182,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-6">
         <h6>Equipo/herramientas</h6>
         <br>
@@ -208,7 +220,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-6">
         <h6>Sistema logístico e identificación</h6>
         <br>
@@ -235,7 +246,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-6">
         <h6>Sistema interno</h6>
         <br>
@@ -295,7 +305,6 @@
         </div>
     </div>
 </div>
-
 <div class="row mt-4">
     <div class="col-6">
         <h6>Puertos de entrada.</h6>
@@ -331,7 +340,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-6">
         <h6>Monitor.</h6>
         <br>
@@ -354,7 +362,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-6">
         <h6>Equipo de Protección Personal (EPP).</h6>
         <br>
@@ -367,10 +374,8 @@
                 <label class="form-check-label" for="verificacionConcepto19">19.Pulsera antiestática.</label>
                 <input class="form-check-input" type="checkbox" value="1" id="verificacionConcepto19" name="verificacionConcepto19">
             </div>
-            
         </div>
     </div>
-
     <div class="col-6">
         <h6>Teclado y panel táctil/touchpad</h6>
         <br>
@@ -401,30 +406,31 @@
     <div class="col-6">
         <div class="form-group">
             <label for="verificacionConceptoObservacion" class="form-label">Concepto</label>
-            <textarea class="form-control" id="verificacionConceptoObservacion" name="verificacionConceptoObservacion" rows="1" placeholder="" required></textarea>
+            <input class="form-control" id="verificacionConceptoObservacion" name="verificacionConceptoObservacion" rows="1" placeholder="" required></input>
         </div>
     </div>
     <div class="col-6">
-        <div class="form-group">
-            <label for="verificacionAccion" class="form-label">Acción correctiva </label>
-            <textarea class="form-control" id="verificacionAccion" name="verificacionAccion" rows="1" placeholder="" required></textarea>
+    <div class="form-group">
+            <label for="verificacionFechaCumplimiento" class="form-label">Fecha de cumplimiento</label>
+            <input type="date" class="form-control" id="verificacionFechaCumplimiento" name="verificacionFechaCumplimiento" required>
         </div>
+
     </div>
     <div class="col-6">
         <div class="form-group">
             <label for="verificacionResponsable" class="form-label">Responsable</label>
-            <textarea class="form-control" id="verificacionResponsable" name="verificacionResponsable" rows="1" placeholder="" required></textarea>
+            <input class="form-control" id="verificacionResponsable" name="verificacionResponsable" rows="1" placeholder="" required></input>
         </div>
     </div>
     <div class="col-6">
-        <div class="form-group">
-            <label for="verificacionFechaCumplimiento" class="form-label">Fecha de cumplimiento</label>
-            <input type="date" class="form-control" id="verificacionFechaCumplimiento" name="verificacionFechaCumplimiento" required>
+    <div class="form-group">
+            <label for="verificacionAccion" class="form-label">Acción correctiva </label>
+            <input class="form-control" id="verificacionAccion" name="verificacionAccion" rows="1" placeholder="" required></input>
         </div>
     </div>
 </div>
 
-            <button type="submit" class="btn btn-success">Aceptar</button>
+                <button type="submit" class="btn btn-success">Aceptar</button>
         </form>
     </div>
 
