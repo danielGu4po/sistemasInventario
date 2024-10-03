@@ -90,4 +90,7 @@ class SatisfaccionController extends Controller
         // Retorna la vista formatoSatisfaccion.blade.php con los datos de la evaluación
         return view('satisfaccion.formatoSatisfaccion', compact('evaluacion'));
     }
+
+        
+
 }

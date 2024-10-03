@@ -84,7 +84,6 @@
                 .block h4, .block p, .block label {
                     text-align: left;
                 }
-                
 
 /* Efecto hover para los textos (label) dentro de .form-check-container */
 .form-check-container:hover label {
@@ -92,7 +91,6 @@
     font-weight: bold; /* Hacer el texto más grueso */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Añadir una sombra sutil */
 }
-
 /* Efecto hover para los checkboxes */
 .form-check-container:hover .form-check-input {
     border-color: #2980b9; /* Cambia el borde del checkbox cuando se hace hover */
@@ -172,8 +170,6 @@
             </div>
             </div>
 <!-- Nuevas listas de checkboxes -->
-
-
 <div class="row">
                 <div class="col-md-6">
                     <div class="block">
@@ -200,8 +196,6 @@
                             <input class="form-check-input" type="checkbox" value="1" id="verificacionConcepto5" name="verificacionConcepto5">
                         </div>
                     </div>
-
-
                     <div class="block">
                         <h6>Sistema logístico e identificación</h6>
                         <br>
@@ -227,13 +221,9 @@
                             <input class="form-check-input" type="checkbox" value="1" id="verificacionConcepto10" name="verificacionConcepto10">
                         </div>
                     </div>
-
-
-
                     <div class="block">
                             <h6>Puertos de entrada</h6>
                             <br>
-
                             <div class="form-check-container">
                                 <label class="form-check-label" for="verificacionConcepto11">11.Puerto de entrada USB.</label>
                                 <input class="form-check-input" type="checkbox" value="1" id="verificacionConcepto11" name="verificacionConcepto11">
@@ -264,7 +254,6 @@
                             </div>
 
                     </div>
-
                     <div class="block">
                                 <h6>Equipo de Protección Personal (EPP)</h6>
                                 <br>
@@ -276,12 +265,10 @@
                                 <label class="form-check-label" for="verificacionConcepto19">19.Pulsera antiestática.</label>
                                 <input class="form-check-input" type="checkbox" value="1" id="verificacionConcepto19" name="verificacionConcepto19">
                             </div>
-
                     </div>
                     <div class="block">
                                 <h6>Equipo/herramientas</h6>
                                 <br>
-
                                     <div class="form-check-container">
                                         <label class="form-check-label" for="verificacionConcepto20">20.Destornilladores.</label>
                                         <input class="form-check-input" type="checkbox" value="1" id="verificacionConcepto20" name="verificacionConcepto20">
@@ -314,17 +301,9 @@
                                         <label class="form-check-label" for="verificacionConcepto27">27.Linterna.</label>
                                         <input class="form-check-input" type="checkbox" value="1" id="verificacionConcepto27" name="verificacionConcepto27">
                                     </div>
-
-                    </div>
-                    
+                    </div> 
                 </div>
-
-                <!-- Aquí puedes seguir agregando más bloques -->
                 <div class="col-md-6">
-                   
-
-
-
                     <div class="block">
                                 <h6>Sistema interno</h6>
                                 <br>
@@ -380,11 +359,7 @@
                                     <label class="form-check-label" for="verificacionConcepto40">40.Unidad óptica.</label>
                                     <input class="form-check-input" type="checkbox" value="1" id="verificacionConcepto40" name="verificacionConcepto40">
                                 </div>
-
-
                     </div>
-
-
                     <div class="block">
                                 <h6>Monitor</h6>
                                 <br>
@@ -447,7 +422,6 @@
                                                     <label for="verificacionFechaCumplimiento" class="form-label">Fecha de cumplimiento</label>
                                                     <input type="date" class="form-control" id="verificacionFechaCumplimiento" name="verificacionFechaCumplimiento" required>
                                                 </div>
-
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
@@ -460,7 +434,6 @@
                                                     <label for="verificacionAccion" class="form-label">Acción correctiva </label>
                                                     <input class="form-control" id="verificacionAccion" name="verificacionAccion" rows="1" placeholder="" required></input>
                                                 </div>
-
                     </div>
                     </div>
                 </div>

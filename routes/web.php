@@ -10,6 +10,7 @@ use App\Http\Controllers\ExcelsatisfaccionController;
 use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\WordController;
 use App\Http\Controllers\VerificacionController;
+use App\Http\Controllers\MatrizMttoExcel;
 
 Route::get('/', function () {
     return view('welcome');
@@ -67,14 +68,11 @@ Route::get('/descargar-formato-mttos', function () {
 })->name('descargar.formato.mttos');
 /**Formato para Mttos. */
 
-
 Route::get('/generar-responsiva/{id}', [WordController::class, 'generarResponsiva'])->name('word.responsiva');
-
 
 Route::get('/formulario-validacion', function () { return view('verificacion.formularioVerificacion');});
 
 Route::post('/verificacion/store', [VerificacionController::class, 'store'])->name('verificacion.store');
-
 
 /**Subir formatos de MTTOS */
 Route::post('/mantenimiento/{id}/upload', [MantenimientoController::class, 'uploadFile'])->name('mantenimiento.uploadFile');
@@ -88,20 +86,17 @@ Route::post('/mantenimiento/{id}/programar', [MantenimientoController::class, 'p
 Route::get('/mantenimiento/{id}', [MantenimientoController::class, 'show'])->name('mantenimiento.show');
 // Ruta para mostrar el mantenimiento
 
-
-
-
 Route::get('/generar-responsiva/{id}', [WordController::class, 'generarResponsiva'])->name('word.responsiva');
-
 
 Route::get('/formulario-validacion', function () { return view('verificacion.formularioVerificacion'); })->name('verificacion.formularioVerificacion');
 
 Route::post('/verificacion/store', [VerificacionController::class, 'store'])->name('verificacion.store');
 
-
 Route::get('/encuesta-satisfaccion', function () {return view('satisfaccion.encuestaSatisfaccion');})->name('encuesta.satisfaccion');
 
 
+
+Route::get('/matriz-mtto-excel', [MatrizMttoExcel::class, 'exportExcel'])->name('matriz.export');
 
 Auth::routes();
 

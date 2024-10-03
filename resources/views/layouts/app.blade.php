@@ -77,6 +77,9 @@
                                     <li>
                                         <a href="{{url('/satisfaccion')}}" style="cursor: pointer">{{ __('Evaluaciones de servicio  ') }}<i class="fa-solid fa-list"></i></a>
                                     </li>
+                                    <li>
+                                    <a href="{{ route('matriz.export') }}" style="cursor: pointer">{{ __('Matriz Mtto     ') }}<i class="fa-solid fa-download"></i></a>
+                                    </li>
                                 </ul>
                             </li>
                             <li style="font-size: 12px;" class="dropdown">
