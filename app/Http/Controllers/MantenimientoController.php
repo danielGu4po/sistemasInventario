@@ -7,6 +7,9 @@ use App\Models\inventario;
 use App\Models\asignar;
 use App\Models\mantenimiento;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MaintenanceNotification;
+
 
 
 class MantenimientoController extends Controller
@@ -208,6 +211,21 @@ class MantenimientoController extends Controller
         }
 
         return back()->with('error', 'Error al subir el archivo.');
+    }
+
+
+    public function enviarNotificaciones(Request $request)
+    {
+        $correos = ['auxiliar.ti@topo-int.com'];
+
+        foreach ($correos as $correo) {
+            Mail::raw('Notificación de mantenimiento programado.', function ($message) use ($correo) {
+                $message->to($correo)
+                    ->subject('Notificación de Mantenimiento');
+            });
+        }
+
+        return redirect()->back()->with('success', 'Notificaciones enviadas correctamente.');
     }
 
     /** 

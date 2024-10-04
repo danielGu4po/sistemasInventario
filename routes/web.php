@@ -94,6 +94,10 @@ Route::post('/verificacion/store', [VerificacionController::class, 'store'])->na
 
 Route::get('/encuesta-satisfaccion', function () {return view('satisfaccion.encuestaSatisfaccion');})->name('encuesta.satisfaccion');
 
+/**Envio de correo */
+Route::post('/enviar-notificaciones', [MantenimientoController::class, 'enviarNotificaciones'])->name('mantenimiento.notificar');
+/**Envio de correo */
+
 
 
 Route::get('/matriz-mtto-excel', [MatrizMttoExcel::class, 'exportExcel'])->name('matriz.export');

@@ -137,13 +137,13 @@
                         <p>Revisa los detalles antes de guardar el mantenimiento.</p>
                         <div class="card-body">
                             @if($archivos->isNotEmpty())
-                            <table class="table table-hover">
+                            <table class="table table-hover" id>
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Tipo de Mantenimiento</th>
                                         <th>Archivo</th>
-                                        <th>Encuesta</th>
+                                        <th>Encuesta</th>   
                                     </tr>
                                 </thead>
                                 <tbody>

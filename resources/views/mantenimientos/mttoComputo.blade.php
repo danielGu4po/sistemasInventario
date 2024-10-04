@@ -3,10 +3,19 @@
 
 <div class="container mt-3">
     <h1 class="mb-4">Mantenimientos Computó</h1> 
-    <div class="text-center mt-4">
-        <a href="{{ route('descargar.formato.mttos') }}" class="btn btn-primary">Formato de Mttos.</a>
+    <div class="row justify-content-between">
+        <div class="col-auto">
+            <a href="{{ route('descargar.formato.mttos') }}" class="btn btn-primary">Formato de Mttos.</a>
+        </div>
+        <div class="col-auto">
+            <form action="{{ route('mantenimiento.notificar') }}" method="POST">
+                @csrf
+                <!-- Aquí puedes agregar input hidden si necesitas enviar más datos al servidor -->
+                <button type="submit" class="btn btn-warning">Notificar</button>
+            </form>
+        </div>
     </div>
-    <table class="table table-striped">
+    <table class="table table-striped mt-4">
         <thead>
             <tr>
                 <th>Marca</th>
@@ -48,7 +57,5 @@
             @endforeach
         </tbody>
     </table>
-    
-
 </div>
 @endsection
