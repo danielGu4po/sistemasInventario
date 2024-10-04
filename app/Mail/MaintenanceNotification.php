@@ -13,26 +13,9 @@ class MaintenanceNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject;
-    public $body;
-    public $pdfPath;
-
-    /**
-     * Create a new message instance.
-     *
-     * @param  string  $subject
-     * @param  string  $body
-     * @return void
-     */
-    public function __construct($subject, $body)
-    {
-        $this->subject = $subject;
-        $this->body = $body;
-    }
-
     public function build()
     {
-        return $this->subject($this->subject)
+        return $this->subject('Mantenimientos a Equipos de Computó.')
                     ->view('mails.mantenimientoNotificacion');
     }
 }

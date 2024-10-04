@@ -137,7 +137,7 @@
                         <p>Revisa los detalles antes de guardar el mantenimiento.</p>
                         <div class="card-body">
                             @if($archivos->isNotEmpty())
-                            <table class="table table-hover" id>
+                            <table class="table table-hover" id="inventarioTable">
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
@@ -262,5 +262,26 @@
 
 </div>
 
+<!-- Incluir DataTables y jQuery desde el CDN -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Inicializar DataTables
+        $('#inventarioTable').DataTable({
+            "paging": true,
+            "lengthMenu": [5, 10, 25, 50, 100],
+            "pageLength": 10,
+            "ordering": true,
+            "info": true,
+            "searching": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/Spanish.json" // Traducción al español
+            }
+        });
+    });
+</script>
 
 @endsection

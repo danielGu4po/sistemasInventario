@@ -216,15 +216,12 @@ class MantenimientoController extends Controller
 
     public function enviarNotificaciones(Request $request)
     {
-        $correos = ['auxiliar.ti@topo-int.com'];
-
+        $correos = ['sistemas.it@topo-int.com'];
+    
         foreach ($correos as $correo) {
-            Mail::raw('Notificación de mantenimiento programado.', function ($message) use ($correo) {
-                $message->to($correo)
-                    ->subject('Notificación de Mantenimiento');
-            });
+            Mail::to($correo)->send(new \App\Mail\MaintenanceNotification());
         }
-
+    
         return redirect()->back()->with('success', 'Notificaciones enviadas correctamente.');
     }
 

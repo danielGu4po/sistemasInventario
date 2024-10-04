@@ -109,7 +109,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'sistemas.it@topo-int.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'auxiliar.ti@topo-int.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 

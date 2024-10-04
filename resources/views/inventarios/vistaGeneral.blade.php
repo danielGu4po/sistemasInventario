@@ -40,7 +40,6 @@
     @endif
 </div>
 
-<!-- Estilo de estado funcional/no funcional -->
 <style>
     .estado {
         display: inline-block;

@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container mt-3">
-    <h1 class="mb-4">Mantenimientos Computó</h1> 
+    <h1 class="mb-4">Mantenimientos</h1> 
     <div class="row justify-content-between">
         <div class="col-auto">
             <a href="{{ route('descargar.formato.mttos') }}" class="btn btn-primary">Formato de Mttos.</a>
@@ -10,12 +10,14 @@
         <div class="col-auto">
             <form action="{{ route('mantenimiento.notificar') }}" method="POST">
                 @csrf
-                <!-- Aquí puedes agregar input hidden si necesitas enviar más datos al servidor -->
-                <button type="submit" class="btn btn-warning">Notificar</button>
+                <button type="submit" class="btn btn-secondary">Notificar</button>
             </form>
         </div>
     </div>
-    <table class="table table-striped mt-4">
+
+    <br>
+
+    <table class="table table-striped mt-4" id="inventarioTable">
         <thead>
             <tr>
                 <th>Marca</th>
@@ -58,4 +60,26 @@
         </tbody>
     </table>
 </div>
+
+<!-- Incluir DataTables y jQuery desde el CDN -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Inicializar DataTables
+        $('#inventarioTable').DataTable({
+            "paging": true,
+            "lengthMenu": [5, 10, 25, 50, 100],
+            "pageLength": 10,
+            "ordering": true,
+            "info": true,
+            "searching": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/Spanish.json" // Traducción al español
+            }
+        });
+    });
+</script>
 @endsection
