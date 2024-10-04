@@ -17,6 +17,7 @@
                 <th>Marca</th>
                 <th>No. Serie</th>
                 <th>Observaciones</th>
+                <th>QR</th>
                 <th>Ver</th>
             </tr>
         </thead>
@@ -31,6 +32,9 @@
                 <td>{{ $asignacion->inventario->inventarioMarca }}</td>
                 <td>{{ $asignacion->inventario->inventarioSerie }}</td>
                 <td>{{$asignacion->inventario->inventarioObservaciones}}</td>
+                <td>
+                    <a href="{{ route('asignar.qr', $asignacion->id) }}" class="btn btn-secondary btn-sm">QR</a>
+                </td>
                 <td>
                     <a href="{{route('asignar.show',$asignacion->id)}}" class="btn btn-info btn-sm">Ver</a>
                 </td>

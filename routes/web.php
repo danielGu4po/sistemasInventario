@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::resource('/asignar', AsignarController::class);
 Route::get('/asignar/{id}/ver', [AsignarController::class, 'show'])->name('asignar.show');
 Route::delete('/asignar/{id}',[AsignarController::class,'destroy'])->name('asignar.delete');
+Route::get('/asignar/{id}/qr', [AsignarController::class, 'descargarQr'])->name('asignar.qr');
 /**Rutas de CRUD para Asignaciones */
 Route::post('/inventario', [InventarioController::class, 'store']);
 

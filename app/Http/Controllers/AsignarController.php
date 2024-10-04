@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\asignar;
 use App\Models\inventario;
 use PDF;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
 class AsignarController extends Controller
@@ -92,6 +93,19 @@ class AsignarController extends Controller
         $asignacion = asignar::with('inventario')->findOrFail($id);
         $pdf = PDF::loadView('asignaciones.responsivaPDF',compact('asignacion'));
         return $pdf->download('asignacion-' . $asignacion->id . '.pdf');
+    }
+
+    public function descargarQr($id)
+    {
+        $url = route('asignar.show', $id); // URL de la vista "Detalles de la Asignación"
+        
+        // Generar el código QR
+        $qrCode = QrCode::format('png')->size(300)->generate($url);
+
+        // Devolver la descarga del QR como imagen PNG
+        return response($qrCode)
+            ->header('Content-Type', 'image/png')
+            ->header('Content-Disposition', 'attachment; filename="asignacion-qr-' . $id . '.png"');
     }
 
     /**
