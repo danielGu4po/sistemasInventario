@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\WordController;
 use App\Http\Controllers\VerificacionController;
 use App\Http\Controllers\MatrizMttoExcel;
+use App\Http\Controllers\QrCodeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -102,6 +103,8 @@ Route::post('/enviar-notificaciones', [MantenimientoController::class, 'enviarNo
 
 
 Route::get('/matriz-mtto-excel', [MatrizMttoExcel::class, 'exportExcel'])->name('matriz.export');
+
+
 
 Auth::routes();
 

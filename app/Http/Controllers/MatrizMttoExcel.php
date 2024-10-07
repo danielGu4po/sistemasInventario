@@ -31,18 +31,18 @@ class MatrizMttoExcel extends Controller
         
         // Mapear los meses a las celdas correspondientes
         $monthCells = [
-            1  => ['O15' => 'P', 'O16' => 'R'],   // Enero
-            2  => ['Q15' => 'P', 'Q16' => 'R'],   // Febrero
-            3  => ['S15' => 'P', 'S16' => 'R'],   // Marzo
-            4  => ['U15' => 'P', 'U16' => 'R'],   // Abril
-            5  => ['W15' => 'P', 'W16' => 'R'],   // Mayo
-            6  => ['Y15' => 'P', 'Y16' => 'R'],   // Junio
-            7  => ['AA15' => 'P', 'AA16' => 'R'], // Julio
-            8  => ['AC15' => 'P', 'AC16' => 'R'], // Agosto
-            9  => ['AE15' => 'P', 'AE16' => 'R'], // Septiembre
-            10 => ['AG15' => 'P', 'AG16' => 'R'], // Octubre
-            11 => ['AI15' => 'P', 'AI16' => 'R'], // Noviembre
-            12 => ['AK15' => 'P', 'AK16' => 'R'], // Diciembre
+            1  => ['O15' => 'P', 'O16' => 'R'],     // Enero
+            2  => ['Q15' => 'P', 'Q16' => 'R'],     // Febrero
+            3  => ['S15' => 'P', 'S16' => 'R'],     // Marzo
+            4  => ['U15' => 'P', 'U16' => 'R'],     // Abril
+            5  => ['W15' => 'P', 'W16' => 'R'],     // Mayo
+            6  => ['Y15' => 'P', 'Y16' => 'R'],     // Junio
+            7  => ['AA15' => 'P', 'AA16' => 'R'],   // Julio
+            8  => ['AC15' => 'P', 'AC16' => 'R'],   // Agosto
+            9  => ['AE15' => 'P', 'AE16' => 'R'],   // Septiembre
+            10 => ['AG15' => 'P', 'AG16' => 'R'],   // Octubre
+            11 => ['AI15' => 'P', 'AI16' => 'R'],   // Noviembre
+            12 => ['AK15' => 'P', 'AK16' => 'R'],   // Diciembre
         ];
 
         foreach ($inventarios as $index => $inventario) {

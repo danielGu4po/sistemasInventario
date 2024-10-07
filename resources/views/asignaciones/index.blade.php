@@ -38,6 +38,7 @@
                 <td>
                     <a href="{{route('asignar.show',$asignacion->id)}}" class="btn btn-info btn-sm">Ver</a>
                 </td>
+                
             </tr>
             @endforeach
         </tbody>
