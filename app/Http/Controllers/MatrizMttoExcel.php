@@ -76,17 +76,17 @@ class MatrizMttoExcel extends Controller
             $mantenimientos = mantenimiento::where('item_id', $inventario->id)->get();
 
             foreach ($mantenimientos as $key => $mantenimiento) {
-                // Calcular la fila para los registros de mantenimiento, pasando dos filas por cada registro
-                $maintenanceRowStart = $currentRow + ($key * 2);
-
+                // Calcular la fila para los registros de mantenimiento, sumando dos filas por cada mantenimiento
+                $maintenanceRowStart = $currentRow + ($key * 3);
+            
                 // Obtener el mes de la fecha de mantenimiento
                 $mantenimientoFecha = Carbon::parse($mantenimiento->mantenimientoFecha);
                 $month = $mantenimientoFecha->month;
-
+            
                 // Si el mes existe en el mapeo, asigna "P" y "R" en las celdas correctas
                 if (isset($monthCells[$month])) {
                     $cells = $monthCells[$month];
-
+            
                     // Modificar las celdas con el número de fila adecuado
                     $cellP = preg_replace('/\d+/', $maintenanceRowStart, array_key_first($cells));
                     $cellR = preg_replace('/\d+/', $maintenanceRowStart + 1, array_key_last($cells));
@@ -96,7 +96,6 @@ class MatrizMttoExcel extends Controller
                     $sheet->setCellValue($cellR, $cells[array_key_last($cells)]);
                 }
             }
-
             // Si llegas al límite de filas, detén la iteración
             if ($currentRow >= 54) {
                 break; // Detén la iteración cuando llegues a la fila 54
